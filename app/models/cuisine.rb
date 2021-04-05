@@ -1,2 +1,10 @@
 class Cuisine < ApplicationRecord
+
+  validates :cuisine_name, presence: true
+  validates :cuisine_image_id, presence: true
+  validates :introduction, presence: true
+  validates :time, presence: true
+
+  has_many :cuisine_comments, dependent: :destroy
+  has_many :cuisine_favorites, dependent: :destroy
 end
