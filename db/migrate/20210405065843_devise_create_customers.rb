@@ -31,7 +31,12 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
+      t.string :name
+      t.string :k_name
+      t.string :nickname
+      t.string :customer_image_id
+      t.text :introduction
+      t.boolean :is_valid, default: true, null: false
 
       t.timestamps null: false
     end
