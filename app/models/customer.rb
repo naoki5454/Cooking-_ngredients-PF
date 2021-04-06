@@ -7,8 +7,6 @@ class Customer < ApplicationRecord
         validates :name, presence: true
         validates :k_name, presence: true
         validates :nickname, presence: true
-        validates :introduction, presence: true
-        validates :customer_image_id, presence: true
         validates :email, presence: true
 
         has_many :cuisine_comments, dependent: :destroy
