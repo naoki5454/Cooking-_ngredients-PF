@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :customers, only: [:show, :index, :edit, :update, :destroy]
     resources :cuisines, only: [:index, :show, :destroy]
-    resources :genres, only: [:show, :index, :edit, :update, :destroy]
+    resources :genres, only: [:show, :index, :create, :edit, :update, :destroy]
   end
 
   devise_for :customers, skip: :all
