@@ -10,12 +10,30 @@ class Admins::GenresController < ApplicationController
     if @genre.save
       redirect_to admins_genres_path
     else
-      render admins_genres_path
+      @genres = Genre.all
+      render "index"
     end
+  end
+
+  def edit
+    @genre = Genre.find(params[:id])
+  end
+
+  def update
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
+      redirect_to admins_genres_path, notice: "更新しました"
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+
   end
 
   private
   def genre_params
-    params.require(:genre).permit(:name)
+    params.require(:genre).permit(:genre_name)
   end
 end
