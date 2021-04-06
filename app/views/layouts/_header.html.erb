@@ -1,0 +1,23 @@
+<header class=" header border-bottom border-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container mt-2">
+      <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="center_line">ようこそ、<%= current_customer.name %>さん！</li>
+          <li><%= link_to "マイページ", customer_path(current_customer.id), class: 'border rounded nav-link text-body mr-4' %></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'border rounded nav-link text-body' %></li>
+        <% elsif admin_signed_in? %>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, class: 'border rounded nav-link text-body' %></li>
+        <% else %>
+          <li><%= link_to "料理一覧", cuisines_path, class: 'border rounded nav-link text-body mr-4' %></li>
+          <li><%= link_to "About", about_path, class: 'border rounded nav-link text-body mr-4' %></li>
+          <li><%= link_to "新規登録", new_customer_registration_path, class: 'border rounded nav-link text-body mr-4' %></li>
+          <li><%= link_to "ログイン", new_customer_session_path, class: 'border rounded nav-link text-body' %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
