@@ -11,3 +11,14 @@ Admin.create(
   password: 'testtest',
   )
 
+Customer.create(
+  email: 'mo@mo',
+  password: 'momomo',
+  name: 'もも',
+  k_name: 'モモ',
+  nickname: 'もも'
+  )
+
+  Genre.create(
+    genre_name: '揚げ物'
+    )
