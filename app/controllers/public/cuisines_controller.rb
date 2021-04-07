@@ -6,6 +6,7 @@ class Public::CuisinesController < ApplicationController
 
   def create
     @cuisine = Cuisine.new(cuisine_params)
+    @cuisine.customer_id = current_customer.id
     if @cuisine.save
       redirect_to cuisines_path
     else
