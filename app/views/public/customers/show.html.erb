@@ -16,11 +16,23 @@
 </div>
 <div>
   <div>
-    <div>
+    <divclass>
       <% @cuisines.each do |cuisine| %>
-      <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
-      <%= cuisine.cuisine_name %>
-      <%= cuisine.time %>
+      <table>
+        <tr>
+          <td>
+            <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+          </td>
+          <td>
+            <%= link_to cuisine_path do %>
+            <%= cuisine.cuisine_name %>
+            <% end %>
+          </td>
+          <td>
+            <%= cuisine.time %>分
+          </td>
+        </tr>
+      </table>
       <% end %>
     </div>
   </div>
