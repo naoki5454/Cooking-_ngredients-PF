@@ -6,17 +6,16 @@ class Public::CuisinesController < ApplicationController
 
   def create
     @cuisine = Cuisine.new(cuisine_params)
-    #if
-    @cuisine.save
+    if @cuisine.save
       redirect_to cuisines_path
-    #else
-      #render "new"
-    #end
+    else
+      render "new"
+    end
   end
 
   private
   def cuisine_params
-    params.require(:cuisine).permit(:cuisine_image_id, :genre_id, :cuisine_name, :introduction, :time)
+    params.require(:cuisine).permit(:customer_id, :cuisine_image_id, :genre_id, :cuisine_name, :introduction, :time)
   end
 
 end
