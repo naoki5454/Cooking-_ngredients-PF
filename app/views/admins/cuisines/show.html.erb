@@ -16,5 +16,8 @@
       <p>説明</p>
       <%= @cuisine.introduction %>
     </div>
+    <div>
+      <%= link_to "投稿削除", admins_cuisine_path(@cuisine), method: :delete, "date-confirm" => "本当に削除しますか？" %>
+    </div>
   </div>
 </div>
