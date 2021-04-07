@@ -10,5 +10,7 @@ class Admins::CuisinesController < ApplicationController
 
   def destroy
     @cuisine = Cuisine.find(params[:id])
+    @cuisine.destroy
+    redirect_to admins_cuisines_path
   end
 end
