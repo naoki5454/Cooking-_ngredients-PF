@@ -25,16 +25,22 @@ ActiveRecord::Schema.define(version: 2021_04_05_082222) do
   end
 
   create_table "cuisine_comments", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "cuisine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cuisine_favorites", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "cuisine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cuisines", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "customer_id"
     t.string "cuisine_name"
     t.string "cuisine_image_id"
     t.text "introduction"
