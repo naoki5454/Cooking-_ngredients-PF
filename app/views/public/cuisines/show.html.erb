@@ -1,0 +1,26 @@
+<h3>料理詳細</h3>
+<div>
+  <div>
+    <div>
+      <%= attachment_image_tag @cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+    </div>
+    <div>
+      <%= @cuisine.cuisine_name %>
+    </div>
+    <div>
+      <%= @cuisine.time %>分
+    </div>
+    <div>
+      <%= @cuisine.introduction %>分
+    </div>
+  </div>
+</div>
+<table>
+  <% @genres.each do |genre| %>
+  <tr>
+    <td>
+      <%= genre.genre_name %>
+    </td>
+  </tr>
+   <% end %>
+</table>
