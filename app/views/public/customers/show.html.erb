@@ -1,0 +1,27 @@
+<h3>マイページ</h3>
+<div>
+  <div class="text-center">
+    <div>
+      <%= attachment_image_tag @customer, :customer_image_id, :fill, 100, 100, format: 'jpeg' %>
+    </div>
+    <div>
+      <%= @customer.nickname %>
+      <%= @customer.introduction %>
+    </div>
+    <div>
+      <%= link_to "料理の投稿", new_cuisine_path, class: 'btn btn-primary' %>
+      <%= link_to "編集", edit_cuisine_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+<div>
+  <div>
+    <div>
+      <% @cuisines.each do |cuisine| %>
+      <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+      <%= cuisine.cuisine_name %>
+      <%= cuisine.time %>
+      <% end %>
+    </div>
+  </div>
+</div>
