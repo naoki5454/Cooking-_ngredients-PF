@@ -1,0 +1,16 @@
+<h3>料理一覧</h3>
+
+<table>
+  <% @cuisines.each do |cuisine| %>
+    <tr>
+      <td>
+        <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+      </td>
+      <td>
+        <%= cuisine.cuisine_name %>
+      </td>
+      <td>
+        <%= cuisine.time %>
+      </td>
+    </tr>
+</table>
