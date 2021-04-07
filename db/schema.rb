@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_082222) do
     t.integer "genre_id"
     t.integer "customer_id"
     t.string "cuisine_name"
-    t.string "cuisine_image_id"
+    t.string "cuisine_image_id"#idは消す
     t.text "introduction"
     t.string "time"
     t.datetime "created_at", null: false
