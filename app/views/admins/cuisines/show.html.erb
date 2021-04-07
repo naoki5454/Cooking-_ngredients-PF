@@ -1,0 +1,23 @@
+<h3>料理詳細</h3>
+
+<div>
+  <div>
+    <div>
+      <%= attachment_image_tag @cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+    </div>
+    <div>
+      <%= @cuisine.cuisine_name %>
+    </div>
+    <div>
+      <p>調理時間</p>
+      <%= @cuisine.time %>
+    </div>
+    <div>
+      <p>説明</p>
+      <%= @cuisine.introduction %>
+    </div>
+    <div>
+      <%= link_to "投稿削除", admins_cuisine_path(@cuisine), method: :delete, "date-confirm" => "本当に削除しますか？" %>
+    </div>
+  </div>
+</div>
