@@ -1,0 +1,16 @@
+<h3>料理の一覧</h3>
+<div>
+  <div>
+    <div>
+      <% @cuisines.each do |cuisine| %>
+      <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+      <%= link_to admins_cuisine_path(cuisine) do %>
+      <%= cuisine.cuisine_name %>
+      <% end %>
+      <h4>調理時間</h4>
+      <%= cuisine.time %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= paginate @cuisines %>
