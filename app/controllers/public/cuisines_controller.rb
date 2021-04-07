@@ -4,6 +4,14 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.new
   end
 
+  def index
+   @cuisines = Cuisine.page(params[:page]).per(8)
+   @genres = Genre.all
+  end
+
+  def show
+  end
+
   def create
     @cuisine = Cuisine.new(cuisine_params)
     @cuisine.customer_id = current_customer.id

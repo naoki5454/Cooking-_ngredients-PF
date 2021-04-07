@@ -4,7 +4,7 @@ class Cuisine < ApplicationRecord
   validates :introduction, presence: true
   validates :time, presence: true
 
-  belongs_to :customer, optional: true #外部キーを許可するため
+  belongs_to :customer
   has_many :cuisine_comments, dependent: :destroy
   has_many :cuisine_favorites, dependent: :destroy
 end
