@@ -7,10 +7,23 @@
         <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
       </td>
       <td>
+        <%= link_to cuisine_path(cuisine) do %>
         <%= cuisine.cuisine_name %>
+        <% end %>
       </td>
       <td>
-        <%= cuisine.time %>
+        <%= cuisine.time %>分
       </td>
     </tr>
+    <% end %>
+</table>
+<%= paginate @cuisines %>
+<table>
+  <% @genres.each do |genre| %>
+  <tr>
+    <td>
+      <%= genre.genre_name %>
+    </td>
+  </tr>
+   <% end %>
 </table>
