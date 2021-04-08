@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :customers, only: [:show, :edit, :update]
+    resources :genres, only: [:show,]
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
