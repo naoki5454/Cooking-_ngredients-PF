@@ -5,6 +5,7 @@ class Cuisine < ApplicationRecord
   validates :time, presence: true
 
   belongs_to :customer
+  belongs_to :genre
   has_many :cuisine_comments, dependent: :destroy
   has_many :cuisine_favorites, dependent: :destroy
 end
