@@ -5,14 +5,8 @@ class Public::CuisinesController < ApplicationController
   end
 
   def index
-    case params[:list_dishes]
-    when "0"
-      @cuisines = Cuisine.page(params[:page]).per(8)
-      @genres = Genre.all
-    else
-      @genre = Genre.find(params[:id])
-      @cuisines = @genre.cuisine
-    end
+    @cuisines = Cuisine.page(params[:page]).per(8)
+    @genres = Genre.all
   end
 
   def show
