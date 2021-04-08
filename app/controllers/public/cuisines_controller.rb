@@ -5,8 +5,8 @@ class Public::CuisinesController < ApplicationController
   end
 
   def index
-   @cuisines = Cuisine.page(params[:page]).per(8)
-   @genres = Genre.all
+    @cuisines = Cuisine.page(params[:page]).per(8)
+    @genres = Genre.all
   end
 
   def show
@@ -18,7 +18,7 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.new(cuisine_params)
     @cuisine.customer_id = current_customer.id
     if @cuisine.save
-      redirect_to cuisines_path
+      redirect_to cuisine_path(@cuisine)
     else
       render "new"
     end
