@@ -21,3 +21,12 @@
     </div>
   </div>
 </div>
+<table>
+  <% @genres.each do |genre| %>
+  <tr>
+    <td>
+      <%= genre.genre_name %>
+    </td>
+  </tr>
+   <% end %>
+</table>
