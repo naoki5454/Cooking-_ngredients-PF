@@ -12,6 +12,7 @@ class Public::CuisinesController < ApplicationController
   def show
     @cuisine = Cuisine.find(params[:id])
     @genres = Genre.all
+    @cuisine_comments = CuisineComment.new
   end
 
   def create
