@@ -30,15 +30,16 @@
 </table>
 <div class="comments">
 <p>コメント件数：<%= @cuisine.cuisine_comments.count %></p>
-<% @cuisine.cuisine_comments.each do |cuisine_comment| %>
-  <p><%#= image_tag('sample-author1.jpg') %></p>
-  <%= cuisine_comment.customer.name %>
-  <%= cuisine_comment.created_at.strftime('%Y/%m/%d') %><%= cuisine_comment.comment %>
-<% end %>
 </div>
 <div class="new-comment">
 <%= form_with(model:[@cuisine, @cuisine_comments], local: true) do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
   <%= f.submit "送信する" %>
 <% end %>
+</div>
+<div>
+  <% @cuisine.cuisine_comments.each do |cuisine_comment| %>
+  <%= cuisine_comment.customer.name %>
+  <%= cuisine_comment.created_at.strftime('%Y/%m/%d') %><%= cuisine_comment.comment %>
+  <% end %>
 </div>
