@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['Cooking_ingredients'] %>
+  database: <%= ENV['Cooking_ingredients_PF'] %>
   adapter: mysql2
   encoding: utf8mb4
   charset: utf8mb4
