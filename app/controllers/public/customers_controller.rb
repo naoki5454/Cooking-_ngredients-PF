@@ -18,4 +18,8 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def customer_params
+    params.require(:customer).permit(:nickname, :customer_image_id, :introduction)
+  end
+
 end
