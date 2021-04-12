@@ -1,0 +1,22 @@
+<h3>会員情報</h3>
+
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>会員一覧</th>
+      </tr>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td><%= attachment_image_tag @customer, :customer_image_id, :fill, 100, 100, format: 'jpeg' %></td>
+        <td><%= customer.name %></td>
+        <td>会員ステータス</td>
+        <% if @customer.is_valid == true %>
+        <th class="text-success">有効</th>
+        <% else %>
+        <th class="text-secondary">退会</th>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+</div>
