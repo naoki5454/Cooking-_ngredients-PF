@@ -15,7 +15,7 @@
           </td>
         <td>
           <%= link_to admins_customer_path(customer) do %>
-          <%= customer.name %>
+          <%= customer.nickname %>
           <% end %>
         </td>
         <td>会員ステータス</td>
@@ -24,7 +24,7 @@
         <% else %>
         <th class="text-secondary">退会</th>
         <% end %>
-        <td><%= link_to "編集", edit_admins_customer_path(customer) %></td>
+        <td><%= link_to "詳細", admins_customer_path(customer) %></td>
       </tr>
       <% end %>
     </table>
