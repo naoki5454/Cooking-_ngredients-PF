@@ -1,0 +1,33 @@
+<h3>会員情報</h3>
+
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>会員一覧</th>
+      </tr>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td>
+          <%= link_to admins_customer_path(customer) do %>
+          <%= attachment_image_tag @customer, :customer_image_id, :fill, 100, 100, format: 'jpeg' %>
+          <% end %>
+          </td>
+        <td>
+          <%= link_to admins_customer_path(customer) do %>
+          <%= customer.name %>
+          <% end %>
+        </td>
+        <td>会員ステータス</td>
+        <% if customer.is_valid == true %>
+        <th class="text-success">有効</th>
+        <% else %>
+        <th class="text-secondary">退会</th>
+        <% end %>
+        <td><%= link_to "編集", edit_admins_customer_path(customer) %></td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @customers %>
+  </div>
+</div>
