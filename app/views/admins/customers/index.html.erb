@@ -11,12 +11,15 @@
         <td><%= attachment_image_tag @customer, :customer_image_id, :fill, 100, 100, format: 'jpeg' %></td>
         <td><%= customer.name %></td>
         <td>会員ステータス</td>
-        <% if @customer.is_valid == true %>
+        <% if customer.is_valid == true %>
         <th class="text-success">有効</th>
         <% else %>
         <th class="text-secondary">退会</th>
         <% end %>
+        <td><%= link_to "編集", edit_admins_customer_path(customer) %></td>
       </tr>
+      <% end %>
     </table>
+    <%= paginate @customers %>
   </div>
 </div>
