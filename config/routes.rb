@@ -22,14 +22,14 @@ Rails.application.routes.draw do
     get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
   end
 
-  scope module: :public do
+  scope module: :public do #routeが被らないように
     resources :customers, only: [:show, :edit, :update]
     resources :genres, only: [:show,]
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
       resource :cuisine_favorites, only: [:create, :destroy]
-      resources :cuisine_comments, only: [:create, :destroy] #もしかしたらできないかも
+      resources :cuisine_comments, only: [:create, :destroy]
     end
   end
 
