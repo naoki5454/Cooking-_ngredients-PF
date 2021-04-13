@@ -20,6 +20,7 @@
           <%= link_to cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(cuisine), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
         <% end %>
       </td>
+      <td>コメント件数：<%= cuisine.cuisine_comments.count %></td>
     </tr>
     <% end %>
 </table>
