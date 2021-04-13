@@ -14,10 +14,18 @@
       <%= @cuisine.introduction %>分
     </div>
     <div>
+      <% if @cuisine.favorited_by?(current_customer) %>
+        <%= link_to @cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(@cuisine), method: :delete, remote: true, class: "fas fa-heart heart_red" %>
+      <% else %>
+        <%= link_to @cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(@cuisine), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
+      <% end %>
+    </div>
+    <div>
       <%= link_to "編集", edit_cuisine_path, class: 'btn btn-success px-4' %>
     </div>
   </div>
 </div>
+
 <h3>ジャンル一覧</h3>
 <table>
   <% @genres.each do |genre| %>
@@ -29,4 +37,22 @@
     </td>
   </tr>
    <% end %>
+</table>
+<div class="new-comment">
+<%= form_with(model:[@cuisine, @cuisine_comments], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>
+<table>
+  <% @cuisine.cuisine_comments.each do |cuisine_comment| %>
+  <tr>
+    <td>
+      <%= link_to customer_path(cuisine_comment.customer) do %>
+      <%= cuisine_comment.customer.name %>
+      <% end %>
+      <%= cuisine_comment.created_at.strftime('%Y/%m/%d') %><%= cuisine_comment.comment %>
+    </td>
+  </tr>
+  <% end %>
 </table>
