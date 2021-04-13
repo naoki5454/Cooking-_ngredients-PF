@@ -12,7 +12,8 @@ class Customers::SessionsController < Devise::SessionsController
   def create #退会した会員がログインできないように
       @customer = Customer.find_by(email: params[:customer][:email])
       if @customer && @customer.is_valid == false
-        redirect_to request.referer, notice: "退会済みのアカウントです"
+        redirect_to root_path
+        flash[:notice] = "退会済みのアカウントです"
       else
         super
       end
