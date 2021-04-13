@@ -1,4 +1,4 @@
-class Public::CommentsController < ApplicationController
+class Public::CuisineCommentsController < ApplicationController
 
   def create
     cuisine = Cuisine.find(params[:cuisine_id])
@@ -11,6 +11,7 @@ class Public::CommentsController < ApplicationController
   private
 
   def cuisine_comments_params
-    params.require(:cuisine_comments).permit(:comment)
+    params.require(:cuisine_comment).permit(:comment)
   end
+
 end
