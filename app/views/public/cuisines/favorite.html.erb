@@ -3,7 +3,11 @@
 <table>
   <% @favorites.each do |favorites| %>
   <tr>
-    <td><%= favorites.customer.name %></td>
+    <td>
+      <%= link_to customer_path(favorites.customer) do %>
+      <%= favorites.customer.name %>
+      <% end %>
+    </td>
   </tr>
   <% end %>
 </table>
