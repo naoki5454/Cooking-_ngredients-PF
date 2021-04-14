@@ -15,6 +15,11 @@ class Public::CuisinesController < ApplicationController
     @cuisine_comments = CuisineComment.new
   end
 
+  def favorite
+    @cuisine = Cuisine.find(params[:cuisine_id])
+    @favorites = @cuisine.cuisine_favorites
+  end
+
   def create
     @cuisine = Cuisine.new(cuisine_params)
     @cuisine.customer_id = current_customer.id
