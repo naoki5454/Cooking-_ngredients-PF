@@ -12,4 +12,9 @@ class Cuisine < ApplicationRecord
   def favorited_by?(customer)
     cuisine_favorites.where(customer_id: customer.id).exists?
   end
+
+  def self.search(search)
+    return Cuisine.all unless search
+    Cuisine.where(['content LIKE ?', "%#{search}%"])
+  end
 end
