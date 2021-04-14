@@ -13,8 +13,7 @@ class Cuisine < ApplicationRecord
     cuisine_favorites.where(customer_id: customer.id).exists?
   end
 
-  def self.search(search)
-    return Cuisine.all unless search
-    Cuisine.where(['content LIKE ?', "%#{search}%"])
+  def self.search(search,word)
+    Cuisine.where(['cuisine_name LIKE ?', "%#{word}%"])
   end
 end

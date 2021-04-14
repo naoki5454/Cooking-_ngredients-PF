@@ -2,6 +2,7 @@ class Public::CuisinesController < ApplicationController
 
   def search
     redirect_to root_path if params[:word] == "" # キーワードが入力されていないとトップページに飛ぶ
+    redirect_to root_path if params[:range] == ""
     @range = params[:range]
 		@search = params[:search]
 		@word = params[:word]
