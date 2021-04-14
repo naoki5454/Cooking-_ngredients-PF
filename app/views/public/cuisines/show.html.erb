@@ -13,14 +13,8 @@
     <div>
       <%= @cuisine.introduction %>分
     </div>
-    <div>
-      <% if @cuisine.favorited_by?(current_customer) %>
-        <%= link_to @cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(@cuisine), method: :delete, remote: true, class: "fas fa-heart heart_red" %>
-        <%= link_to "件のいいね", cuisine_favorites_path(@cuisine) %>
-      <% else %>
-        <%= link_to @cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(@cuisine), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
-        <%= link_to "件のいいね", cuisine_favorites_path(@cuisine) %>
-      <% end %>
+    <div id = <%= "cuisine_#{ @cuisine.id }" %>>
+      <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine %>
     </div>
     <div>
       <%= link_to "編集", edit_cuisine_path, class: 'btn btn-success px-4' %>
