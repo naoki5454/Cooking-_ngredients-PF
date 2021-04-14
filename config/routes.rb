@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
+      get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
       resource :cuisine_favorites, only: [:create, :destroy]
       resources :cuisine_comments, only: [:create, :destroy]
     end

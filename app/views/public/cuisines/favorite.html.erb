@@ -1,0 +1,9 @@
+<h3><%= @cuisine.cuisine_name %>へのいいね一覧</h3>
+
+<table>
+  <% @favorites.each do |favorites| %>
+  <tr>
+    <td><%= favorites.customer.name %></td>
+  </tr>
+  <% end %>
+</table>
