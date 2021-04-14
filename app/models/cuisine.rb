@@ -12,4 +12,8 @@ class Cuisine < ApplicationRecord
   def favorited_by?(customer)
     cuisine_favorites.where(customer_id: customer.id).exists?
   end
+
+  def self.search(search,word)
+    Cuisine.where(['cuisine_name LIKE ?', "%#{word}%"])
+  end
 end
