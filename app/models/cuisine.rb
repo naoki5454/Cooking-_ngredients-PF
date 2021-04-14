@@ -8,4 +8,8 @@ class Cuisine < ApplicationRecord
   belongs_to :genre
   has_many :cuisine_comments, dependent: :destroy
   has_many :cuisine_favorites, dependent: :destroy
+
+  def favorited_by?(customer)
+    cuisine_favorites.where(customer_id: customer.id).exists?
+  end
 end
