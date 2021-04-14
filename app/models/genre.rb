@@ -4,7 +4,7 @@ class Genre < ApplicationRecord
 
   #部分一致検索のため
   def self.search(search, word)
-    @genres = Genre.where("name LIKE?","%#{word}%")
+    @genres = Genre.where("genre_name LIKE?","%#{word}%")
   end
 
 end
