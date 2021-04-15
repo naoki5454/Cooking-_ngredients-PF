@@ -33,9 +33,9 @@ Rails.application.routes.draw do
       resource :cuisine_favorites, only: [:create, :destroy]  #いいね機能
       resources :cuisine_comments, only: [:create, :destroy]  #コメント機能
     end
-    get 'contact' => 'inquiry#new'                        # 入力画面
-    post 'contact/confirm' => 'contact#confirm'             # 確認画面
-    post 'contacty/thanks' => 'contacty#thanks'             # 送信完了画面s
+    get 'contact' => 'contact#new'                            # 入力画面
+    post 'contact/confirm' => 'contact#confirm'               # 確認画面
+    post 'contact/thanks' => 'contact#thanks'                 # 送信完了画面s
   end
 
 end
