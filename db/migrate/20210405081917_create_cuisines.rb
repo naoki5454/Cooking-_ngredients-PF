@@ -6,6 +6,7 @@ class CreateCuisines < ActiveRecord::Migration[5.2]
       t.integer :customer_id
       t.string :cuisine_name
       t.string :cuisine_image_id
+      t.text :material_introduction
       t.text :introduction
       t.string :time
 

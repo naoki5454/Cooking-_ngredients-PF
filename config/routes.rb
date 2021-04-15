@@ -5,11 +5,12 @@ Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
   sessions: 'admins/sessions'
-}
+  }
   namespace :admins do
     resources :customers, only: [:show, :index, :edit, :update, :destroy]
     resources :cuisines, only: [:index, :show, :destroy]
     resources :genres, only: [:show, :index, :create, :edit, :update, :destroy]
+    resources :contact, only: [:show, :index]
   end
 
   devise_for :customers, skip: :all
@@ -22,17 +23,20 @@ Rails.application.routes.draw do
     get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
   end
 
-  scope module: :public do #routeが被らないように
+    scope module: :public do #routeが被らないように
     resources :customers, only: [:show, :edit, :update]
     resources :genres, only: [:show]
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
       get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
-      get :search, on: :collection
-      resource :cuisine_favorites, only: [:create, :destroy]
-      resources :cuisine_comments, only: [:create, :destroy]
+      get :search, on: :collection                            #検索機能
+      resource :cuisine_favorites, only: [:create, :destroy]  #いいね機能
+      resources :cuisine_comments, only: [:create, :destroy]  #コメント機能
     end
+    get 'new/contact' => 'contact#new'
+    post 'contact/confirm' => 'contact#confirm'               # 確認画面
+    post 'contact' => 'contact#create'
+    get 'contact/thanks' => 'contact#thank'
   end
-
 end
