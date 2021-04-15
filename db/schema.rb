@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_082222) do
   end
 
   create_table "cuisine_comments", force: :cascade do |t|
+    t.text "comment"
     t.integer "customer_id"
     t.integer "cuisine_id"
     t.datetime "created_at", null: false
