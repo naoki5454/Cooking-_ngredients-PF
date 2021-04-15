@@ -29,10 +29,13 @@ Rails.application.routes.draw do
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
       get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
-      get :search, on: :collection
-      resource :cuisine_favorites, only: [:create, :destroy]
-      resources :cuisine_comments, only: [:create, :destroy]
+      get :search, on: :collection                            #検索機能
+      resource :cuisine_favorites, only: [:create, :destroy]  #いいね機能
+      resources :cuisine_comments, only: [:create, :destroy]  #コメント機能
     end
+    get 'contact' => 'inquiry#new'                        # 入力画面
+    post 'contact/confirm' => 'contact#confirm'             # 確認画面
+    post 'contacty/thanks' => 'contacty#thanks'             # 送信完了画面s
   end
 
 end
