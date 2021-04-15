@@ -13,8 +13,12 @@
       <td>
         <%= cuisine.time %>分
       </td>
-      <td id = <%= "cuisine_#{ @cuisine.id }" %>>
-        <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine %>
+      <td>
+        <% if customer_signed_in? %>
+          <%= render 'public/cuisine_favorites/favorites', cuisine: cuisine %>
+        <% else %>
+          <span class="fas fa-heart heart_red"><%= cuisine.cuisine_favorites.count %></span>
+        <% end %>
       </td>
       <td>コメント件数：<%= cuisine.cuisine_comments.count %></td>
     </tr>
