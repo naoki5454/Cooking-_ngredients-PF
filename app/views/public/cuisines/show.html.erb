@@ -37,21 +37,9 @@
   </tr>
    <% end %>
 </table>
-<div class="new-comment">
-<%= form_with(model:[@cuisine, @cuisine_comments], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
+<div id = <%= "cuisine_#{ @cuisine.id }" %>>
+  <%= render 'public/cuisine_comments/comments_form', cuisine: @cuisine, cuisine_comments: @cuisine_comments %>
 </div>
 <table>
-  <% @cuisine.cuisine_comments.each do |cuisine_comment| %>
-  <tr>
-    <td>
-      <%= link_to customer_path(cuisine_comment.customer) do %>
-      <%= cuisine_comment.customer.name %>
-      <% end %>
-      <%= cuisine_comment.created_at.strftime('%Y/%m/%d') %><%= cuisine_comment.comment %>
-    </td>
-  </tr>
-  <% end %>
+  <%= render 'public/cuisine_comments/comments_index', cuisine: @cuisine %>
 </table>
