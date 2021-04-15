@@ -1,4 +1,6 @@
 class Public::CuisinesController < ApplicationController
+  before_action :authenticate_customer!, only: [:new, :favorite, :create, :edit, :update]
+  before_action :correct_cuisine, only: [:edit]
 
   def search
     redirect_to root_path if params[:word] == "" # キーワードが入力されていないとトップページに飛ぶ
@@ -28,7 +30,7 @@ class Public::CuisinesController < ApplicationController
     @cuisine_comments = CuisineComment.new
   end
 
-  def favorite
+  def favorite #料理へのいいね一覧
     @cuisine = Cuisine.find(params[:cuisine_id])
     @favorites = @cuisine.cuisine_favorites
   end
@@ -53,6 +55,13 @@ class Public::CuisinesController < ApplicationController
       redirect_to cuisine_path(@cuisine)
     else
       render "edit"
+    end
+  end
+
+  def correct_cuisine
+    @cuisine = Cuisine.find(params[:id])
+    unless @cuisine.customer.id == current_customer.id
+      redirect_to root_path
     end
   end
 
