@@ -3,5 +3,5 @@
     <%= link_to "件のいいね", cuisine_favorites_path(cuisine) %>
   <% else %>
     <%= link_to cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(cuisine), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
-    <%= link_to "件のいいね", cuisine_favorites_path(cuisine) %>
+    <%= link_to "件のいいね", cuisine_favorites_path(cuisine) %>q
   <% end %>
