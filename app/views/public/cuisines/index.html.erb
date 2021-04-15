@@ -13,12 +13,8 @@
       <td>
         <%= cuisine.time %>分
       </td>
-      <td>
-        <% if cuisine.favorited_by?(current_customer) %>
-          <%= link_to cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(cuisine), method: :delete, remote: true, class: "fas fa-heart heart_red" %>
-        <% else %>
-          <%= link_to cuisine.cuisine_favorites.count, cuisine_cuisine_favorites_path(cuisine), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
-        <% end %>
+      <td id = <%= "cuisine_#{ @cuisine.id }" %>>
+        <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine %>
       </td>
       <td>コメント件数：<%= cuisine.cuisine_comments.count %></td>
     </tr>
