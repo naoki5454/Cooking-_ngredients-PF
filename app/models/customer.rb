@@ -12,4 +12,5 @@ class Customer < ApplicationRecord
         has_many :cuisines, dependent: :destroy
         has_many :cuisine_comments, dependent: :destroy
         has_many :cuisine_favorites, dependent: :destroy
+        has_many :contact
 end
