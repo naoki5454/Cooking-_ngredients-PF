@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :index, :edit, :update, :destroy]
     resources :cuisines, only: [:index, :show, :destroy]
     resources :genres, only: [:show, :index, :create, :edit, :update, :destroy]
+    resources :cantact
   end
 
   devise_for :customers, skip: :all
@@ -33,9 +34,7 @@ Rails.application.routes.draw do
       resource :cuisine_favorites, only: [:create, :destroy]  #いいね機能
       resources :cuisine_comments, only: [:create, :destroy]  #コメント機能
     end
-    get 'contact' => 'contact#new'                            # 入力画面
-    post 'contact/confirm' => 'contact#confirm'               # 確認画面
-    post 'contact/thanks' => 'contact#thanks'                 # 送信完了画面s
+    resources :cantact
   end
 
 end
