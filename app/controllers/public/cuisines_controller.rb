@@ -1,5 +1,18 @@
 class Public::CuisinesController < ApplicationController
 
+  def search
+    redirect_to root_path if params[:word] == "" # キーワードが入力されていないとトップページに飛ぶ
+    redirect_to root_path if params[:range] == ""
+    @range = params[:range]
+		@search = params[:search]
+		@word = params[:word]
+		if @range == '1'
+			@cuisine = Cuisine.search(@search,@word)
+		elsif @range == '2'
+			@genres = Genre.search(@search,@word)
+		end
+  end
+
   def new
     @cuisine = Cuisine.new
   end
@@ -12,6 +25,12 @@ class Public::CuisinesController < ApplicationController
   def show
     @cuisine = Cuisine.find(params[:id])
     @genres = Genre.all
+    @cuisine_comments = CuisineComment.new
+  end
+
+  def favorite
+    @cuisine = Cuisine.find(params[:cuisine_id])
+    @favorites = @cuisine.cuisine_favorites
   end
 
   def create
