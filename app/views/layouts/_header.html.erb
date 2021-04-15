@@ -12,6 +12,7 @@
           <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'border rounded nav-link text-body' %></li>
           <%= render 'layouts/search' %>
         <% elsif admin_signed_in? %>
+          <li><%= link_to "お問い合わせ", admins_contact_index_path, class: 'border rounded nav-link text-body' %></li>
         　<li><%= link_to "料理一覧", admins_cuisines_path, class: 'border rounded nav-link text-body' %></li>
         　<li><%= link_to "会員一覧", admins_customers_path, class: 'border rounded nav-link text-body' %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'border rounded nav-link text-body' %></li>
