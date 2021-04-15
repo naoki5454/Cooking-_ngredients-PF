@@ -1,0 +1,13 @@
+<h3><%= @cuisine.cuisine_name %>へのいいね一覧</h3>
+
+<table>
+  <% @favorites.each do |favorites| %>
+  <tr>
+    <td>
+      <%= link_to customer_path(favorites.customer) do %>
+      <%= favorites.customer.name %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

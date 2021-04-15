@@ -24,10 +24,12 @@ Rails.application.routes.draw do
 
   scope module: :public do #routeが被らないように
     resources :customers, only: [:show, :edit, :update]
-    resources :genres, only: [:show,]
+    resources :genres, only: [:show]
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
+      get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
+      get :search, on: :collection
       resource :cuisine_favorites, only: [:create, :destroy]
       resources :cuisine_comments, only: [:create, :destroy]
     end
