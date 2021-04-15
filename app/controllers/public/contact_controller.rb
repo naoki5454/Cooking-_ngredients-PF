@@ -1,25 +1,29 @@
 class Public::ContactController < ApplicationController
 
   def new
-    # 入力画面を表示
     @contact = Contact.new
   end
 
   def confirm
     # 入力値のチェック
-    contact = params.require(:contact).permit(:name, :email, :message)
+    contact = params.require(:contact).permit(:name, :message)
     @contact = Contact.new(contact)
       #確認画面を表示
       render 'confirm'
   end
 
-  def thanks
-    # メール送信
-    contact = params.require(:contact).permit(:name, :email, :message)
-    @contact = Contact.new(contact)
-    InquiryMailer.received_email(@contact).deliver
+  def create
+    @contact = Contact.new(contact_params)
+    @contact.customer_id = current_customer.id
+    @contact.save
+    redirect_to contact_thanks_path
+  end
 
-    # 完了画面を表示
-    render 'thanks'
+  def thank
+  end
+
+  private
+  def contact_params
+    params.require(:contact).permit(:name, :message, :customer_id)
   end
 end
