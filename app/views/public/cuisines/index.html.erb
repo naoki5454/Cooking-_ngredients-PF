@@ -3,7 +3,7 @@
   <% @cuisines.each do |cuisine| %>
     <tr>
       <td>
-        <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+        <%= attachment_image_tag cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %>
       </td>
       <td>
         <%= link_to cuisine_path(cuisine) do %>
@@ -13,8 +13,12 @@
       <td>
         <%= cuisine.time %>分
       </td>
-      <td id = <%= "cuisine_#{ @cuisine.id }" %>>
-        <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine %>
+      <td>
+        <% if customer_signed_in? %>
+          <%= render 'public/cuisine_favorites/favorites', cuisine: cuisine %>
+        <% else %>
+          <span class="fas fa-heart heart_red"><%= cuisine.cuisine_favorites.count %></span>
+        <% end %>
       </td>
       <td>コメント件数：<%= cuisine.cuisine_comments.count %></td>
     </tr>
@@ -33,3 +37,4 @@
   </tr>
    <% end %>
 </table>
+<%= paginate @genres %>

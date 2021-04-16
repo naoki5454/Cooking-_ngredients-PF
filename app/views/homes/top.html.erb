@@ -1,4 +1,22 @@
 <p id="alert-notice"><%= notice %></p>
+<% if customer_signed_in? %>
+<div class="container-fluid pt-5">
+  <div class="row">
+    <div class="col-2"></div>
+    <div>
+      <h3>ようこそCooking ingredientsへ</h4>
+    </div>
+    <div class="w-100"></div>
+    <div class="col text-center pt-5">
+      <h4>
+        あなたの自慢のレシピを</br>
+        投稿するもメモとして残すも</br>
+        ご自由にお使いください
+      </h6>
+    </div>
+  </div>
+</div>
+<% else %>
 <div class="container-fluid pt-5">
   <div class="row">
     <div class="col-2"></div>
@@ -24,4 +42,27 @@
       <%= link_to "登録まだの方", new_customer_registration_path, class: 'btn btn-success' %>
     </div>
   </div>
+</div>
+<% end %>
+<div class="back">
+    <div class="container">
+        <h1>今日のごはん</h1>
+        <div class="row mt-5 mx-5">
+            <% @cuisines.each do |cuisines| %>
+            <div class="mx-auto">
+                <div>
+                    <%= link_to cuisine_path(cuisines) do %>
+                    <%= attachment_image_tag cuisines, :cuisine_image, :fill, 200, 100, format: 'jpeg', class: 'maru' %>
+                    <% end %>
+                </div>
+                <div>
+                    <%= link_to cuisine_path(cuisines) do %>
+                    <%= cuisines.cuisine_name %>
+                    <% end %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <p class="text-right mb-0"><%= link_to "全てのレシピを見る", cuisines_path %></p>
+    </div>
 </div>
