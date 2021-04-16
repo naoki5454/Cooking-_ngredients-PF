@@ -15,25 +15,25 @@
       <%= f.label "料理名" %>
     </div>
     <div>
-      <%= f.text_field :cuisine_name, autofocus: true %>
+      <%= f.text_field :cuisine_name, placeholder: "親子丼", autofocus: true %>
     </div>
     <div>
       <%= f.label "調理時間" %>
     </div>
     <div>
-      <%= f.text_field :time, autofocus: true %>分
+      <%= f.text_field :time, placeholder: "10", autofocus: true %>分
     </div>
     <div>
       <%= f.label "材料" %>
     </div>
     <div>
-      <%= f.text_area :material_introduction, autofocus: true %>
+      <%= f.text_area :material_introduction, placeholder: "かいわれ=>ひとつかみなど", autofocus: true %>
     </div>
     <div>
       <%= f.label "説明" %>
     </div>
     <div>
-      <%= f.text_area :introduction, autofocus: true %>
+      <%= f.text_area :introduction, placeholder: "工程など", autofocus: true %>
     </div>
     <div>
       <%= f.submit '投稿', class: 'btn btn-success px-4' %>
