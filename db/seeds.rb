@@ -20,5 +20,33 @@ Customer.create(
   )
 
   Genre.create(
-    genre_name: '揚げ物'
-    )
+    id: '1',
+    genre_name: '和食'
+  )
+
+  Genre.create(
+    id: '2',
+    genre_name: '洋食'
+  )
+
+  Genre.create(
+    id: '3',
+    genre_name: '中華'
+  )
+
+  Cuisine.create(
+    genre_id: '1',
+    customer_id: '1',
+    cuisine_name: 'お好み焼き',
+    cuisine_image: 'images/image.cuinise/TCPAKU0649_TP_V',
+    material_introduction:
+    '４人分
+    キャベツ =>半玉
+    たこ焼き粉 =>500g',
+    introduction:
+    '工程
+    材料を切って混ぜて焼く
+    !point!
+    先に鉄板を温めておくと綺麗に焼ける',
+    time: '15'
+  )

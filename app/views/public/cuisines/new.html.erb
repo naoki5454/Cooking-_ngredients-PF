@@ -3,7 +3,7 @@
   <div>
     <%= form_with model: @cuisine, url: cuisines_path, metod: :post, local:true do |f| %>
     <div>
-      <%= f.file_field :cuisine_image_id %>
+      <%= f.file_field :cuisine_image %>
     </div>
     <div>
       <%= f.label "ジャンル" %>
