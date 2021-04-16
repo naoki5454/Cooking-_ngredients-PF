@@ -67,7 +67,7 @@ class Public::CuisinesController < ApplicationController
 
   private
   def cuisine_params
-    params.require(:cuisine).permit(:customer_id, :cuisine_image_id, :genre_id, :cuisine_name, :material_introduction, :introduction, :time)
+    params.require(:cuisine).permit(:customer_id, :genre_id, :cuisine_image, :cuisine_name, :material_introduction, :introduction, :time)
   end
 
 end

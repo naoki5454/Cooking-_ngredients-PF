@@ -5,6 +5,7 @@ class Cuisine < ApplicationRecord
   validates :introduction, presence: true
   validates :time, presence: true
 
+  attachment :cuisine_image
   belongs_to :customer
   belongs_to :genre
   has_many :cuisine_comments, dependent: :destroy

@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
         validates :nickname, presence: true
         validates :email, presence: true
 
+        attachment :customer_image
         has_many :cuisines, dependent: :destroy
         has_many :cuisine_comments, dependent: :destroy
         has_many :cuisine_favorites, dependent: :destroy
