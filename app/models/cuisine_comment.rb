@@ -1,4 +1,4 @@
-class CuisineComment <
+class CuisineComment < ApplicationRecord
 
     validates :comment, presence: true
 
