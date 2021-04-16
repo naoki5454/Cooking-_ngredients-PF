@@ -4,7 +4,7 @@
   <div>
     <%= form_with model: @cuisine, local:true do |f| %>
     <label>料理画像</label>
-    <%= f.file_field :cuisine_image_id, placeholder: "料理画像" %>
+    <%= f.file_field :cuisine_image, placeholder: "料理画像" %>
     <label>料理名</label>
     <%= f.text_field :cuisine_name, autofocus: true, placeholder:"料理名"%>
     <label>ジャンル</label>
