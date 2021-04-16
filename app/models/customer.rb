@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
         validates :name, presence: true
         validates :k_name, presence: true
-        validates :nickname, presence: true
+        validates :nickname, {presence: true, lengh: {maximum: 15}}
         validates :email, presence: true
 
         attachment :customer_image
