@@ -52,7 +52,7 @@
             <div class="mx-auto">
                 <div>
                     <%= link_to cuisine_path(cuisines) do %>
-                    <%#= attachment_image_tag(cuisines, :cuisine_image_id, :fill, 200, 100, format: 'jpeg', class: 'maru') %>
+                    <%= attachment_image_tag cuisines, :cuisine_image, :fill, 200, 100, format: 'jpeg', class: 'maru' %>
                     <% end %>
                 </div>
                 <div>
