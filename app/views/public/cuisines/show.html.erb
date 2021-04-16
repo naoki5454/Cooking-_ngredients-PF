@@ -26,7 +26,6 @@
     <div>
       <% if customer_signed_in? %>
       <%= link_to "編集", edit_cuisine_path, class: 'btn btn-success px-4' %>
-      <% else %>
       <% end %>
     </div>
   </div>
@@ -45,9 +44,11 @@
    <% end %>
 </table>
 <%= paginate @genres %>
+<% if customer_signed_in? %>
 <div id = <%= "cuisine_#{ @cuisine.id }" %>>
   <%= render 'public/cuisine_comments/comments_form', cuisine: @cuisine, cuisine_comments: @cuisine_comments %>
 </div>
 <table>
   <%= render 'public/cuisine_comments/comments_index', cuisine: @cuisine %>
 </table>
+<% end %>
