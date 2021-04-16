@@ -21,12 +21,12 @@ class Public::CuisinesController < ApplicationController
 
   def index
     @cuisines = Cuisine.page(params[:page]).per(8)
-    @genres = Genre.all
+    @genres = Genre.page(params[:page]).per(8)
   end
 
   def show
     @cuisine = Cuisine.find(params[:id])
-    @genres = Genre.all
+    @genres = Genre.page(params[:page]).per(8)
     @cuisine_comments = CuisineComment.new
   end
 

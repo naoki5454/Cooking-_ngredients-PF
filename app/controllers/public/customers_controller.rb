@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, only: [:edit, :update, :withdraw]
-  #before_action :correct_customer, only: [:edit, :update, :withdraw]
+  before_action :correct_customer, only: [:edit, :update, :withdraw]
 
   def show
     @customer = Customer.find(params[:id])
@@ -27,8 +27,12 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  #def correct_customer
-   #####
+  def correct_customer
+    @customer = Customer.find(params[:id])
+    unless @customer.id == current_customer.id
+      redirect_to root_path
+    end
+  end
 
   def customer_params
     params.require(:customer).permit(:nickname, :customer_image, :introduction)
