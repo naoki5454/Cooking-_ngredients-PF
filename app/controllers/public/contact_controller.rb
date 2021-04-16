@@ -1,4 +1,5 @@
 class Public::ContactController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @contact = Contact.new
@@ -8,8 +9,6 @@ class Public::ContactController < ApplicationController
     # 入力値のチェック
     contact = params.require(:contact).permit(:name, :message)
     @contact = Contact.new(contact)
-      #確認画面を表示
-      render 'confirm'
   end
 
   def create

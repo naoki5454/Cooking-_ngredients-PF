@@ -1,4 +1,5 @@
 class Public::CuisineCommentsController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     cuisine = Cuisine.find(params[:cuisine_id])
