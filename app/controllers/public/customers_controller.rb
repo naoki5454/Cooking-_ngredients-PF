@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!, only: [:edit, :update, :withdraw]
+  before_action :correct_cuisine, only: [:edit, :update, :withdraw]
 
   def show
     @customer = Customer.find(params[:id])
@@ -23,6 +25,13 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_valid: false)
     reset_session
     redirect_to root_path
+  end
+
+  def correct_cuisine
+    @cuisine = Cuisine.find(params[:id])
+    unless @cuisine.customer.id == current_customer.id
+      redirect_to root_path
+    end
   end
 
   def customer_params
