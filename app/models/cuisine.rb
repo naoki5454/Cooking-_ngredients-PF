@@ -1,6 +1,7 @@
 class Cuisine < ApplicationRecord
 
   validates :cuisine_name, presence: true
+  validates :material_introduction, presence: true
   validates :introduction, presence: true
   validates :time, presence: true
 
