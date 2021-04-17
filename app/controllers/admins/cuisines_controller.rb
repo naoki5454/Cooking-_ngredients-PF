@@ -1,4 +1,5 @@
 class Admins::CuisinesController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @cuisines = Cuisine.page(params[:page]).per(8)
