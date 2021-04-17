@@ -1,33 +1,44 @@
 <h3>料理詳細</h3>
 
-<div>
-  <div>
-    <div>
-      <%= attachment_image_tag @cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
-    </div>
-    <div>
-      <%= @cuisine.cuisine_name %>
-    </div>
-    <div>
-      <p>調理時間</p>
-      <%= @cuisine.time %>
-    </div>
-    <div>
-      <p>説明</p>
-      <%= @cuisine.introduction %>
-    </div>
-    <div>
-      <%= link_to "投稿削除", admins_cuisine_path(@cuisine), method: :delete, "date-confirm" => "本当に削除しますか？" %>
-    </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <table class="col">
+      <tr>
+        <td><%= attachment_image_tag @cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>料理名</td>
+        <td><%= @cuisine.cuisine_name %></td>
+      </tr>
+      <tr>
+        <td><p>調理時間</p></td>
+        <td><%= @cuisine.time %></td>
+      </tr>
+      <tr>
+        <td><p>説明</p></td>
+        <td class="overflow-wrap"><%= @cuisine.introduction %></td>
+      </tr>
+       <tr>
+         <th><%= link_to "投稿削除", admins_cuisine_path(@cuisine), method: :delete, "date-confirm" => "本当に削除しますか？" %></th>
+       </tr>
+    </table>
+    <div class="col-1"></div>
+    <table class="col">
+      <tr>
+        <td><h3>ジャンル一覧</h3></td>
+      </tr>
+      <% @genres.each do |genre| %>
+      <tr>
+        <td>
+          <%= link_to edit_admins_genre_path(genre) do %>
+          <%= genre.genre_name %>
+          <% end %>
+        </td>
+      </tr>
+       <% end %>
+    </table>
+    <div class="col"></div>
   </div>
 </div>
-<h3>ジャンル一覧</h3>
-<table>
-  <% @genres.each do |genre| %>
-  <tr>
-    <td>
-      <%= genre.genre_name %>
-    </td>
-  </tr>
-   <% end %>
-</table>

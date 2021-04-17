@@ -31,6 +31,13 @@
   height: 30px;
 }
 
+.side_side {
+  padding: 2.5% 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .maru {
     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
     width: 150px;  /* 縦横を同じ値にする */
