@@ -1,9 +1,9 @@
-<h2>管理者用</h2>
+<h2 class="text-center mt-5">管理者用</h2>
 
 <%= form_with model:@admin, url: admin_session_path, local: true do |f| %>
 
 <div class="container-fluid">
-  <div class="row text-center">
+  <div class="text-center">
     <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -28,4 +28,5 @@
 </div>
 <% end %>
 
-<%= render "admins/shared/links" %>
+<div class="text-center"><%= render "admins/shared/links" %></div>
+
