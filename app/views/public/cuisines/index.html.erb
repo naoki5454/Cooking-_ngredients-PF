@@ -1,40 +1,32 @@
-<h3>料理一覧</h3>
-<table>
-  <% @cuisines.each do |cuisine| %>
-    <tr>
-      <td>
-        <%= attachment_image_tag cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %>
-      </td>
-      <td>
-        <%= link_to cuisine_path(cuisine) do %>
-        <%= cuisine.cuisine_name %>
-        <% end %>
-      </td>
-      <td>
-        <%= cuisine.time %>分
-      </td>
-      <td>
-        <% if customer_signed_in? %>
-          <%= render 'public/cuisine_favorites/favorites', cuisine: cuisine %>
-        <% else %>
-          <span class="fas fa-heart heart_red"><%= cuisine.cuisine_favorites.count %></span>
-        <% end %>
-      </td>
-      <td>コメント件数：<%= cuisine.cuisine_comments.count %></td>
-    </tr>
-    <% end %>
-</table>
-<%= paginate @cuisines %>
-<h5>ジャンル一覧</h5>
-<table>
-  <% @genres.each do |genre| %>
-  <tr>
-    <td>
-      <%= link_to genre_path(genre) do %>
-      <%= genre.genre_name %>
+<h3 class="title">料理一覧</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <table class="table col-5">
+      <% @cuisines.each do |cuisine| %>
+      <tr height="130">
+        <td><%= attachment_image_tag cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %></td>
+        <td width="120">
+          <%= link_to cuisine_path(cuisine) do %>
+          <%= cuisine.cuisine_name %>
+          <% end %>
+        </td>
+        <td><%= cuisine.time %>分</td>
+        <td>
+          <% if customer_signed_in? %>
+            <%= render 'public/cuisine_favorites/favorites', cuisine: cuisine %>
+          <% else %>
+            <span class="fas fa-heart heart_red"><%= cuisine.cuisine_favorites.count %></span>
+          <% end %>
+        </td>
+        <td class="far fa-comment-dots">
+          <%= cuisine.cuisine_comments.count %>
+          <%= link_to "コメント", cuisine_path(cuisine) %>
+        </td>
+      </tr>
       <% end %>
-    </td>
-  </tr>
-   <% end %>
-</table>
-<%= paginate @genres %>
+    </table>
+    <%= render 'public/genres/index', genres: @genres %>
+    <div class="col"></div>
+  </div>
+</div>

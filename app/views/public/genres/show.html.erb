@@ -3,7 +3,7 @@
   <% @cuisines.each do |cuisine| %>
     <tr>
       <td>
-        <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
+        <%= attachment_image_tag cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %>
       </td>
       <td>
         <%= link_to cuisine_path(cuisine) do %>

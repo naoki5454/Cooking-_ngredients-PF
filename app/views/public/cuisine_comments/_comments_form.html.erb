@@ -1,4 +1,6 @@
-<%= form_with(model:[cuisine, cuisine_comments], remote: true) do |f| %>
+<div class="mt-2">
+  <%= form_with(model:[cuisine, cuisine_comments], remote: true) do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
   <%= f.submit "送信する" %>
-<% end %>
+  <% end %>
+</div>

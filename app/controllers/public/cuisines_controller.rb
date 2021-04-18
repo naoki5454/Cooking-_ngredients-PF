@@ -20,7 +20,7 @@ class Public::CuisinesController < ApplicationController
   end
 
   def index
-    @cuisines = Cuisine.page(params[:page]).per(4)
+    @cuisines = Cuisine.page(params[:page]).per(8)
     @genres = Genre.page(params[:page]).per(8)
   end
 

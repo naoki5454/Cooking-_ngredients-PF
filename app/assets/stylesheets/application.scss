@@ -24,34 +24,32 @@
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30px;
-}
-
-.title {
-  margin-top: 50px;
-  margin-left: 180px;
-  margin-bottom: 30px;
-}
-
-.side_side {
   padding: 2.5% 0;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
+.title {
+  margin-top: 50px;
+  margin-left: 400px;
+  margin-bottom: 30px;
+  width: 300px;
+}
+
 .maru {
-    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-    width: 150px;  /* 縦横を同じ値にする */
-    height: 150px;  /* 縦横を同じ値にする */
-    border: solid 2px #fffff0;     /* 枠線指定 */
-    object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+  border-radius: 50%;  /* 円形にする */
+  width: 150px;  /* 縦横を同じ値にする */
+  height: 150px;  /* 縦横を同じ値にする */
+  border: solid 2px #fffff0;     /* 枠線指定 */
+  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
 }
 
 p {
   overflow-wrap: break-word;
+}
+
+.wrapper{
+  min-height: 100%;
+  margin-bottom: -50px;
 }
