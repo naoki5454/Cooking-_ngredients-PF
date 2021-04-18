@@ -7,6 +7,7 @@ class Admins::CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
+    @genres = Genre.all
   end
 
   def destroy

@@ -1,16 +1,18 @@
 <h3>料理の一覧</h3>
 <div>
-  <div>
+  <div class="side_side ml-5 pl-5">
+    <% @cuisines.each do |cuisine| %>
     <div>
-      <% @cuisines.each do |cuisine| %>
-      <%= attachment_image_tag cuisine, :cuisine_image_id, :fill, 100, 100, format: 'jpeg' %>
-      <%= link_to admins_cuisine_path(cuisine) do %>
-      <%= cuisine.cuisine_name %>
-      <% end %>
-      <h4>調理時間</h4>
-      <%= cuisine.time %>
-      <% end %>
+      <%= attachment_image_tag cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %>
+      <div class="mt-3">
+        <%= link_to admins_cuisine_path(cuisine) do %>
+        <%= cuisine.cuisine_name %>
+        <% end %>
+      </div>
+      <h4 class="mt-3">調理時間</h4>
+      <%= cuisine.time %>分
     </div>
+    <% end %>
   </div>
 </div>
 <%= paginate @cuisines %>
