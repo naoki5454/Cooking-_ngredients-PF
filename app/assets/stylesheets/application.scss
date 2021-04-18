@@ -31,6 +31,12 @@
   height: 30px;
 }
 
+.title {
+  margin-top: 50px;
+  margin-left: 180px;
+  margin-bottom: 30px;
+}
+
 .side_side {
   padding: 2.5% 0;
   display: flex;
@@ -44,4 +50,8 @@
     height: 150px;  /* 縦横を同じ値にする */
     border: solid 2px #fffff0;     /* 枠線指定 */
     object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+}
+
+p {
+  overflow-wrap: break-word;
 }
