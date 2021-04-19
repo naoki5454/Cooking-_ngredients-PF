@@ -1,5 +1,5 @@
 <h3 class="title">料理一覧</h3>
-<div class="container-fluid wrapper">
+<div class="container-fluid">
   <div class="row">
     <div class="col"></div>
     <table class="table col-5">
@@ -27,6 +27,13 @@
       <% end %>
     </table>
     <%= render 'public/genres/index', genres: @genres %>
+    <div class="col"></div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div><%= paginate @cuisines %></div>
     <div class="col"></div>
   </div>
 </div>

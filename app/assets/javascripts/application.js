@@ -13,17 +13,19 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery
 //= require rails-ujs
+
+//= require jquery
+//= require jquery_ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree ../../../app/assets/javascripts/.
 //= require_tree .
 
 
 //Skipprの初期化
+/*global $*/
 $(function(){
 $("document").ready(function() {
+
 // オプションを指定してSkipprの実行
 $("#theTarget").skippr({
     // スライドショーの変化 ("fade" or "slide")

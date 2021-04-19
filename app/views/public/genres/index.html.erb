@@ -1,0 +1,18 @@
+<h3 class="title">ジャンル一覧</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5"></div>
+    <table class="table col">
+      <% @genres.each do |genres|%>
+      <tr>
+        <td>
+          <%= link_to genre_path(genres) do %>
+          <%= genres.genre_name %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <div class="col-5"></div>
+  </div>
+</div>

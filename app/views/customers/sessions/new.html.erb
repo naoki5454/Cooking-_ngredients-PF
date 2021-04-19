@@ -1,9 +1,9 @@
-<h2>Log in</h2>
-
+<h2 class="title">Log in</h2>
  <div class="container-fluid">
    <div class="row">
-     <div class="col"></div>
-     <%= form_with model: @customer, url: customer_session_path, local:true do |f| %>
+    <div class="col"></div>
+    <%= render "customers/shared/error_messages", resource: resource %>
+    <%= form_with model: @customer, url: customer_session_path, local:true do |f| %>
     <table class="table table-borderless col" >
       <thead>
         <tr>
@@ -44,6 +44,6 @@
       </thead>
     </table>
     <% end %>
-<div class="col"></div>
-</div>
+    <div class="col"></div>
+  </div>
 </div>

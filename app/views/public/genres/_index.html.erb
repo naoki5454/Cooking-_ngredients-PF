@@ -1,6 +1,6 @@
 <table class="ml-5 mt-3">
   <tr>
-    <td>ジャンル一覧</td>
+    <td>ジャンル名</td>
   </tr>
   <% genres.each do |genre| %>
   <tr>
@@ -11,4 +11,7 @@
     </td>
   </tr>
   <% end %>
+  <tr>
+    <td><%= link_to "もっと見る", genres_path, class: "color" %></td>
+  </tr>
 </table>

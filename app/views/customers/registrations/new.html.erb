@@ -1,40 +1,50 @@
-<h2>Sign up</h2>
-
-<%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local:true do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-     <table class="table table-borderless">
-        <thead>
-          <tr>
-            <td>名前</td>
-            <td><%= f.text_field :name, placeholder: "令和", autofocus: true %></td>
-          </tr>
-          <tr>
-            <td>フリガナ</td>
-            <td><%= f.text_field :k_name, placeholder: "レイワ", autofocus: true %></td>
-          </tr>
-          <tr>
-            <td>ニックネーム</td>
-            <td><%= f.text_field :nickname, placeholder: "れいわ", autofocus: true %></td>
-          </tr>
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= f.email_field :email,placeholder: "sample@sampl.com", autofocus: true %></td>
-          </tr>
-          <tr>
-            <td>パスワード（6文字以上）</td>
-            <td><%= f.password_field :password %></td>
-          </tr>
-          <tr>
-            <td>パスワード（確認用）</td>
-            <td><%= f.password_field :password_confirmation %></td>
-          </tr>
-        </thead>
-      </table>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+<h2 class="title">Sign up</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local:true do |f| %>
+    <%= render "customers/shared/error_messages", resource: resource %>
+    <table class="table table-borderless" align="center">
+      <thead>
+        <tr>
+          <td>名前</td>
+          <td><%= f.text_field :name, placeholder: "令和", autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td><%= f.text_field :k_name, placeholder: "レイワ", autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>ニックネーム</td>
+          <td><%= f.text_field :nickname, placeholder: "れいわ", autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.email_field :email,placeholder: "sample@sampl.com", autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>パスワード（6文字以上）</td>
+          <td><%= f.password_field :password %></td>
+        </tr>
+        <tr>
+          <td>パスワード（確認用）</td>
+          <td><%= f.password_field :password_confirmation %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <div class="actions">
+              <%= f.submit "Sign up" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>登録まだの方は<%= link_to "こちら", new_customer_session_path %></td>
+        </tr>
+      </thead>
+    </table>
+    <% end %>
+    <div class="col"></div>
   </div>
-<% end %>
-<div>
-  <h4>登録まだの方は<%= link_to "こちら", new_customer_session_path %></h4>
 </div>

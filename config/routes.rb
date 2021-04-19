@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to:  'homes#top'
+  root to: 'homes#top'
   get '/about' => 'homes#about'
 
   devise_for :admins, controllers: {
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
     scope module: :public do #routeが被らないように
     resources :customers, only: [:show, :edit, :update]
-    resources :genres, only: [:show]
+    resources :genres, only: [:show, :index]
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
