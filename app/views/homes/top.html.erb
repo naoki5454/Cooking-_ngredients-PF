@@ -1,37 +1,56 @@
 <p id="alert-notice"><%= notice %></p>
 <% if customer_signed_in? %>
 <div class="container-fluid pt-5">
-  <div class="row">
+  <div>
     <div class="col-2"></div>
     <div>
       <h3>ようこそCooking ingredientsへ</h4>
     </div>
-    <div class="w-100"></div>
-    <div class="col text-center pt-5">
-      <h4>
-        あなたの自慢のレシピを</br>
-        投稿するもメモとして残すも</br>
-        ご自由にお使いください
-      </h6>
+    <div id="container">
+        <div id="theTarget">
+            <div class="image2">
+              <h4 class="text-center pt-5">
+                あなたの自慢のレシピを</br>
+                投稿するもメモとして残すも</br>
+                ご自由にお使いください
+              </h4>
+            </div>
+            <div class="image3">
+              <h4 class="text-center pt-5">
+                あなたの自慢のレシピを</br>
+                投稿するもメモとして残すも</br>
+                ご自由にお使いください
+              </h4>
+            </div>
+        </div>
     </div>
   </div>
 </div>
 <% else %>
 <div class="container-fluid pt-5">
-  <div class="row">
-    <div class="col-2"></div>
-    <div>
-      <h3>ようこそCooking ingredientsへ</h4>
-    </div>
-    <div class="w-100"></div>
-    <div class="col text-center pt-5">
-      <h4>
-        めんどくさがり屋のあなたでも</br>
-        意外にも簡単に自炊が始められる</br>
-        レシピが勢揃いしています。
-      </h6>
+  <div class="col-2"></div>
+  <div>
+    <h3>ようこそCooking ingredientsへ</h4>
+  </div>
+  <div id="container">
+    <div id="theTarget">
+      <div class="image2">
+        <h4 class="text-center pt-5">
+          めんどくさがり屋のあなたでも</br>
+          意外にも簡単に自炊が始められる</br>
+          レシピが勢揃いしています。
+        </h4>
+      </div>
+      <div class="image3">
+        <h4 class="text-center pt-5">
+          めんどくさがり屋のあなたでも</br>
+            意外にも簡単に自炊が始められる</br>
+          レシピが勢揃いしています。
+        </h4>
+      </div>
     </div>
   </div>
+</div>
 </div>
 <div class="container-fluid pt-5">
   <div class="row">
