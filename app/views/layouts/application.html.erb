@@ -10,19 +10,16 @@
 
   <body>
     <header class="header border-bottom border-dark">
-      <nav class="navbar-expand-lg">
+      <nav class="navbar-expand-lg text-right">
         <ul>
         <% if customer_signed_in? %>
           <li class="center_line">ようこそ、<%= current_customer.name %>さん！</li>
           <li><%= link_to "お問い合わせ", new_contact_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "マイページ", customer_path(current_customer.id), class: 'border rounded nav-link text-body mr-4' %></li>
-          <li>
-            <%= link_to root_path do %>
-            <%= image_tag 'image/logo2.png', size:'150x70' %>
-            <% end %>
-          </li>
+          <li><%= render 'layouts/logo' %></li>
           <li><%= link_to "料理一覧", cuisines_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'border rounded nav-link text-body' %></li>
+          <li><%= render 'layouts/humberger' %></li>
         <% elsif admin_signed_in? %>
           <li><%= link_to "お問い合わせ", admins_contact_index_path, class: 'border rounded nav-link text-body' %></li>
           <li><%= link_to "ジャンル", admins_genres_path, class: 'border rounded nav-link text-body' %></li>
@@ -32,15 +29,11 @@
         <% else %>
           <li class="center_line"><%= link_to "料理一覧", cuisines_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "About", about_path, class: 'border rounded nav-link text-body mr-4' %></li>
-          <li>
-            <%= link_to root_path do %>
-            <%= image_tag 'image/logo2.png', size:'150x70' %>
-            <% end %>
-          </li>
+          <li><%= render 'layouts/logo' %></li>
           <li><%= link_to "新規登録", new_customer_registration_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "ログイン", new_customer_session_path, class: 'border rounded nav-link text-body' %></li>
+          <li><%= render 'layouts/humberger' %></li>
         <% end %>
-        <%= render 'layouts/humberger' %>
         </ul>
       </nav>
       </div>

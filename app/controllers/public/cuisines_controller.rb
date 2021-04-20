@@ -3,8 +3,7 @@ class Public::CuisinesController < ApplicationController
   before_action :correct_cuisine, only: [:edit]
 
   def search
-    redirect_to root_path if params[:word] == "" # キーワードが入力されていないとトップページに飛ぶ
-    redirect_to root_path if params[:range] == ""
+    redirect_to root_path if params[:word] or params[:range] == "" # wordかrangeが入力されていないとトップページに飛ぶ
     @range = params[:range]
 		@search = params[:search]
 		@word = params[:word]
@@ -21,7 +20,7 @@ class Public::CuisinesController < ApplicationController
 
   def index
     @cuisines = Cuisine.page(params[:page]).per(6)
-    @genres = Genre.page(params[:page]).per(8)
+    @genres = Genre.limit(8)
   end
 
   def show
