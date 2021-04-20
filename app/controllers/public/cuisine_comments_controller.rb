@@ -9,6 +9,13 @@ class Public::CuisineCommentsController < ApplicationController
     #redirect_to cuisine_path(cuisine)
   end
 
+  def destroy
+    @cuisine = Cuisine.find(params[:cuisine_id])
+    @comment = CuisineComment.find(params[:id])
+    @comment.destroy
+  end
+
+
   private
 
   def cuisine_comments_params
