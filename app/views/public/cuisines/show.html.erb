@@ -8,8 +8,8 @@
         <td width="50px"><%= attachment_image_tag @cuisine, :cuisine_image, :fill, 182, 100, format: 'jpeg' %></td>
         <td>
           <% if customer_signed_in? %>
-          <div id = <%= "cuisine_#{ @cuisine.id }" %>, width="150">
-            <%= render 'public/cuisine_favorites/favorites', locals: {cuisine: @cuisine, customer: @customer} %>
+          <div id=<%= "cuisine_buttons_#{ @cuisine.id }" %>>
+            <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine, customer: @customer %>
           </div>
           <% end %>
           <div class="far fa-comment-dots"><%= @cuisine.cuisine_comments.count %>コメント</div>
@@ -40,15 +40,20 @@
           <% end %>
         </td>
       </tr>
+      <% if customer_signed_in? %>
       <tr>
         <td></td>
-        <td>
-          <% if customer_signed_in? %>
-            <div id = <%= "cuisine_#{ @cuisine.id }" %>>
-              <%= render 'public/cuisine_comments/comments', cuisine: @cuisine, cuisine_comments: @cuisine_comments %>
-            </div>
-          <% end %>
+        <td class="mt-2">
+            <%= form_with(model:[@cuisine, @cuisine_comments], remote: true) do |f| %>
+            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+            <% end %>
         </td>
+      </tr>
+      <% end %>
+      <tr>
+        <td></td>
+        <td id=<%= "cuisine_comment_#{ @cuisine.id }" %>><%= render 'public/cuisine_comments/comments', cuisine: @cuisine %></td>
       </tr>
 
     </table>

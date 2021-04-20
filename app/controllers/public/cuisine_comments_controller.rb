@@ -6,7 +6,7 @@ class Public::CuisineCommentsController < ApplicationController
     comment = current_customer.cuisine_comments.new(cuisine_comments_params)
     comment.cuisine_id = cuisine.id
     comment.save
-    redirect_to cuisine_path(cuisine)
+    #redirect_to cuisine_path(cuisine)
   end
 
   private

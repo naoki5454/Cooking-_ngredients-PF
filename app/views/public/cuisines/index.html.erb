@@ -14,7 +14,9 @@
         <td><%= cuisine.time %>分</td>
         <td>
           <% if customer_signed_in? %>
+          <div id=<%= "cuisine_buttons_#{ cuisine.id }" %>>
             <%= render 'public/cuisine_favorites/favorites', cuisine: cuisine %>
+          </div>
           <% else %>
             <span class="fas fa-heart heart_red"><%= cuisine.cuisine_favorites.count %></span>
           <% end %>

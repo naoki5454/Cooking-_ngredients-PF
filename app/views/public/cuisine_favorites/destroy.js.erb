@@ -1,1 +1,1 @@
-$("#cuisine_<%= @cuisine.id %> .favorite-btn").html("<%= escape_javascript(render "cuisine_favorites/favorites", cuisine: @cuisine) %>");
+$("#cuisine_buttons_<%= @cuisine.id %>").html("<%= escape_javascript(render "public/cuisine_favorites/favorites", cuisine: @cuisine) %>");
