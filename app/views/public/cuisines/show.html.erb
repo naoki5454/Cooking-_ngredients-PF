@@ -44,7 +44,7 @@
       <tr>
         <td></td>
         <td class="mt-2">
-            <%= form_with(model:[@cuisine, @cuisine_comments], remote: true) do |f| %>
+            <%= form_with(model:[@cuisine, @comment], remote: true) do |f| %>
             <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
             <% end %>
@@ -53,7 +53,11 @@
       <% end %>
       <tr>
         <td></td>
-        <td id=<%= "cuisine_comment_#{ @cuisine.id }" %>><%= render 'public/cuisine_comments/comments', cuisine: @cuisine %></td>
+        <td>
+          <div id="comments_area">
+            <%= render 'public/cuisine_comments/comments', cuisine: @cuisine, cuisine_comment: @cuisine_comment %>
+          </div>
+        </td>
       </tr>
 
     </table>
