@@ -20,4 +20,5 @@ class Cuisine < ApplicationRecord
   def self.search(search,word)
     Cuisine.where(['cuisine_name LIKE ?', "%#{word}%"])
   end
+
 end

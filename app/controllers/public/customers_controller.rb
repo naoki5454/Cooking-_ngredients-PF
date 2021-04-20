@@ -4,8 +4,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @cuisines = @customer.cuisines
-    @genres = Genre.page(params[:page]).per(8)
+    @cuisine = @customer.cuisines
+    @cuisines = @cuisine.page(params[:page]).per(5)
+    @genres = Genre.limit(7)
   end
 
   def edit

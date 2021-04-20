@@ -1,1 +1,2 @@
-$("#cuisine_<%= @cuisine.id %>).html("<%= escape_javascript(render "public/cuisine_comments/comments", cuisine: @cuisine, , cuisine_comments: @cuisine_comments) %>");
+$("#<%= "comments_area" %>").html("<%= j(render "public/cuisine_comments/comments", comment: @comment) %>");
+$("textarea").val("")
