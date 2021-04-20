@@ -28,7 +28,8 @@ html{
 
 header {
   width: 100%;
-  height: 100px;
+  height: 120px;
+  background-color: #dcdcdc;
 }
 
 body{
@@ -43,18 +44,19 @@ nav ul {
   margin-bottom: 40px;
 }
 
-nav ul li {
+nav ul:not([class="pagination"]) li {
   font-size: 18px;
   padding: 15px 30px;
   display: inline-block;
 }
 
 .wrapper{
+  height: 100%;
   padding-bottom: 150px;
 }
 
 footer {
-  background-color: #31a9ee;
+  background-color: #dcdcdc;
   color: #FFFFFF;
   width: 100%;
   height: 80px;
@@ -81,19 +83,12 @@ p {
   overflow-wrap: break-word;
 }
 
-.image1 {
-  background-image: image-url('image/nasuIMGL4603_TP_V');
+.color1 {
+  color: #F00;
 }
 
-.image2 {
-  background-image: image-url('image/sample2.jpg');
-}
-.image3 {
-  background-image: image-url('image/sample3.jpg');
-}
-
-.color {
-  color:#F00;
+.color2 {
+  color: #226614;
 }
 
 .logo{
@@ -111,8 +106,8 @@ p {
 #nav-open span, #nav-open span:before, #nav-open span:after {
   position: absolute;
   transition: all 0.4s;
-  height: 3px;/*線の太さ*/
-  width: 25px;/*長さ*/
+  height: 3px;
+  width: 25px;
   border-radius: 3px;
   background-color: #31a9ee;
   display: block;
@@ -209,4 +204,8 @@ p {
   -webkit-transform: translateY(-16px) rotate(45deg);
   transform: translateY(-16px) rotate(90deg);
   background-color: #888;
+}
+
+.pagination {
+  justify-content: center;
 }
