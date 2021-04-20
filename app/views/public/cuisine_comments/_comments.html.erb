@@ -1,17 +1,16 @@
-<table>
+<div>
   <% @cuisine.cuisine_comments.each do |cuisine_comment| %>
-  <tr width="200">
-    <td>
-      <%= link_to customer_path(cuisine_comment.customer) do %>
-      <%= cuisine_comment.customer.name %>
-      <% end %>
-      <%= cuisine_comment.comment %>
-    </td>
-    <td>
-      <% if current_customer == cuisine_comment.customer %>
-      <p><%= link_to 'コメントを削除する', cuisine_cuisine_comment_path(cuisine_comment.cuisine_id, cuisine_comment.id), method: :delete, remote: true %></p>
-      <% end %>
-    </td>
-  </tr>
+  <div>
+    <%= link_to customer_path(cuisine_comment.customer) do %>
+    <%= cuisine_comment.customer.name %>
+    <% end %>
+    からのコメント
+  </div>
+  <div><%= cuisine_comment.comment %></div>
+  <div>
+    <% if current_customer == cuisine_comment.customer %>
+    <p class="text-right"><%= link_to '削除', cuisine_cuisine_comment_path(cuisine_comment.cuisine_id, cuisine_comment.id), method: :delete, remote: true, class: "color1" %></p>
+    <% end %>
+  </div>
   <% end %>
-</table>
+</div>

@@ -1,67 +1,10 @@
 <p id="alert-notice"><%= notice %></p>
-<div class="pt-3">
+<div>
   <div>
     <h3 class="mb-5">ようこそCooking ingredientsへ</h4>
   </div>
-    <% if customer_signed_in? %>
-    <div id="container">
-        <div id="theTarget">
-          <div class="image1">
-              <h4 class="text-center pt-5">
-                あなたの自慢のレシピを</br>
-                投稿するもメモとして残すも</br>
-                ご自由にお使いください
-              </h4>
-            </div>
-            <div class="image2">
-              <h4 class="text-center pt-5">
-                あなたの自慢のレシピを</br>
-                投稿するもメモとして残すも</br>
-                ご自由にお使いください
-              </h4>
-            </div>
-            <div class="image3">
-              <h4 class="text-center pt-5">
-                あなたの自慢のレシピを</br>
-                投稿するもメモとして残すも</br>
-                ご自由にお使いください
-              </h4>
-            </div>
-        </div>
-    </div>
-    <% else %>
-      <div id="container">
-        <div id="theTarget">
-          <div class="image2">
-            <h4 class="text-center pt-5">
-              めんどくさがり屋のあなたでも</br>
-              意外にも簡単に自炊が始められる</br>
-              レシピが勢揃いしています。
-            </h4>
-          </div>
-          <div class="image3">
-            <h4 class="text-center pt-5">
-              めんどくさがり屋のあなたでも</br>
-                意外にも簡単に自炊が始められる</br>
-              レシピが勢揃いしています。
-            </h4>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="container-fluid pt-5">
-      <div class="row">
-        <div class="col text-right">
-          <%= link_to "登録済みのかた", new_customer_session_path, class: 'btn btn-primary' %>
-        </div>
-        <div class="col">
-          <%= link_to "登録まだの方", new_customer_registration_path, class: 'btn btn-success' %>
-        </div>
-      </div>
-    </div>
-    <% end %>
-    <div class="container">
+    <%= render 'homes/top' %>
+    <div class="container wrapper">
       <h1 class="mt-3">今日のごはん</h1>
       <div class="row mt-5 mx-5">
         <% @cuisines.each do |cuisines| %>
