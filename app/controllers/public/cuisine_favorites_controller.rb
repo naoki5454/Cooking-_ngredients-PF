@@ -7,7 +7,7 @@ class Public::CuisineFavoritesController < ApplicationController
     unless @cuisine.favorited_by?(current_customer)
       favorite = @cuisine.cuisine_favorites.new(customer_id: current_customer.id)
       favorite.save
-      redirect_to request.referer
+      #redirect_to request.referer
     end
   end
 
@@ -15,7 +15,7 @@ class Public::CuisineFavoritesController < ApplicationController
     @cuisine = Cuisine.find(params[:cuisine_id])
     favorite = @cuisine.cuisine_favorites.find_by(customer_id: current_customer.id)
     favorite.destroy
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
 end

@@ -9,7 +9,7 @@
         <td>
           <% if customer_signed_in? %>
           <div id = <%= "cuisine_#{ @cuisine.id }" %>, width="150">
-            <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine, customer: @customer %>
+            <%= render 'public/cuisine_favorites/favorites', locals: {cuisine: @cuisine, customer: @customer} %>
           </div>
           <% end %>
           <div class="far fa-comment-dots"><%= @cuisine.cuisine_comments.count %>コメント</div>
@@ -45,9 +45,8 @@
         <td>
           <% if customer_signed_in? %>
             <div id = <%= "cuisine_#{ @cuisine.id }" %>>
-              <%= render 'public/cuisine_comments/comments_form', cuisine: @cuisine, cuisine_comments: @cuisine_comments %>
+              <%= render 'public/cuisine_comments/comments', cuisine: @cuisine, cuisine_comments: @cuisine_comments %>
             </div>
-            <%= render 'public/cuisine_comments/comments_index', cuisine: @cuisine %>
           <% end %>
         </td>
       </tr>

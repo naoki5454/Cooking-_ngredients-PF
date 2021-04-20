@@ -3,7 +3,7 @@ class Public::CuisinesController < ApplicationController
   before_action :correct_cuisine, only: [:edit]
 
   def search
-    redirect_to root_path if params[:word] or params[:range] == "" # wordかrangeが入力されていないとトップページに飛ぶ
+    redirect_to root_path if params[:range] == "" #rangeが入力されていないとトップページに飛ぶ
     @range = params[:range]
 		@search = params[:search]
 		@word = params[:word]
