@@ -1,28 +1,25 @@
 <p id="alert-notice"><%= notice %></p>
 <div>
-  <div>
-    <h3 class="mb-5">ようこそCooking ingredientsへ</h4>
-  </div>
-    <%= render 'homes/top' %>
-    <div class="container">
-      <h1 class="mt-3">今日のごはん</h1>
-      <div class="row mt-5 mx-5">
-        <% @cuisines.each do |cuisines| %>
-        <div class="mx-auto">
-          <div>
-            <%= link_to cuisine_path(cuisines) do %>
-            <%= attachment_image_tag cuisines, :cuisine_image, :fill, 200, 100, format: 'jpeg', class: 'maru' %>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to cuisine_path(cuisines) do %>
-            <%= cuisines.cuisine_name %>
-            <% end %>
-          </div>
-        </div>
+  <h3 class="mb-5">ようこそCooking ingredientsへ</h4>
+</div>
+<%= render 'homes/top' %>
+<div class="container">
+  <h1 class="mt-3">今日のごはん</h1>
+  <div class="row mt-5 mx-5">
+    <% @cuisines.each do |cuisines| %>
+    <div class="mx-auto">
+      <div>
+        <%= link_to cuisine_path(cuisines) do %>
+        <%= attachment_image_tag cuisines, :cuisine_image, :fill, 200, 100, format: 'jpeg', class: 'maru' %>
         <% end %>
       </div>
-      <p class="text-right mb-0"><%= link_to "全てのレシピを見る", cuisines_path %></p>
+      <div>
+        <%= link_to cuisine_path(cuisines) do %>
+        <%= cuisines.cuisine_name %>
+        <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
-<div>
+  <p class="text-right mb-0"><%= link_to "全てのレシピを見る", cuisines_path %></p>
+</div>
