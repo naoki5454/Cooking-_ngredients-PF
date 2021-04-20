@@ -1,8 +1,8 @@
-<h3 class="text-center mt-5">料理詳細</h3>
+<h3 class="text-center mt-5"><%= @cuisine.cuisine_name %>の詳細</h3>
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col"></div>
+    <div class="col-4"></div>
     <table class="col">
       <tr>
         <td><%= attachment_image_tag @cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %></td>
@@ -24,12 +24,7 @@
          <th><%= link_to "投稿削除", admins_cuisine_path(@cuisine), method: :delete, "date-confirm" => "本当に削除しますか？" %></th>
        </tr>
     </table>
-    <div class="col-1"></div>
-<<<<<<< HEAD
-    <table class="col mt-5">
-=======
     <table class="col">
->>>>>>> 376dd4884417fd877679edfad78459fa79a09dca
       <tr>
         <td><h3>ジャンル一覧</h3></td>
       </tr>
