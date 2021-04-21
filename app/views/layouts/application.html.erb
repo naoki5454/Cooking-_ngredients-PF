@@ -4,47 +4,46 @@
     <title>CookingIngredients</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class=" header border-bottom border-dark">
-      <nav class="navbar navbar-expand-lg navbar-dark h-100">
-        <div class="container mt-2">
-          <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
-            <ul class="navbar-nav ml-auto">
-            <% if customer_signed_in? %>
-              <li class="center_line">ようこそ、<%= current_customer.name %>さん！</li>
-              <li><%= link_to "お問い合わせ", new_contact_path, class: 'border rounded nav-link text-body mr-4' %></li>
-              <li><%= link_to "マイページ", customer_path(current_customer.id), class: 'border rounded nav-link text-body mr-4' %></li>
-              <li><%= link_to "料理一覧", cuisines_path, class: 'border rounded nav-link text-body mr-4' %></li>
-              <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'border rounded nav-link text-body' %></li>
-            <% elsif admin_signed_in? %>
-              <li><%= link_to "お問い合わせ", admins_contact_index_path, class: 'border rounded nav-link text-body' %></li>
-              <li><%= link_to "ジャンル", admins_genres_path, class: 'border rounded nav-link text-body' %></li>
-            　<li><%= link_to "料理一覧", admins_cuisines_path, class: 'border rounded nav-link text-body' %></li>
-            　<li><%= link_to "会員一覧", admins_customers_path, class: 'border rounded nav-link text-body' %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'border rounded nav-link text-body' %></li>
-            <% else %>
-              <li><%= link_to "料理一覧", cuisines_path, class: 'border rounded nav-link text-body mr-4' %></li>
-              <li><%= link_to "About", about_path, class: 'border rounded nav-link text-body mr-4' %></li>
-              <li><%= link_to "新規登録", new_customer_registration_path, class: 'border rounded nav-link text-body mr-4' %></li>
-              <li><%= link_to "ログイン", new_customer_session_path, class: 'border rounded nav-link text-body' %></li>
-            <% end %>
-            </ul>
-          </div>
-        </div>
+    <header>
+      <nav class="text-right">
+        <ul>
+        <% if customer_signed_in? %>
+          <li>ようこそ、<%= current_customer.name %>さん！</li>
+          <li><%= link_to "お問い合わせ", new_contact_path, class: 'border border-dark rounded nav-link text-body mr-1' %></li>
+          <li><%= link_to "マイページ", customer_path(current_customer.id), class: 'border border-dark rounded nav-link text-body mr-1' %></li>
+          <li><%= render 'layouts/logo' %></li>
+          <li><%= link_to "料理一覧", cuisines_path, class: 'border border-dark rounded nav-link text-body mr-1' %></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'border border-dark rounded nav-link text-body' %></li>
+          <li><%= render 'layouts/humberger' %></li>
+        <% elsif admin_signed_in? %>
+          <li><%= link_to "お問い合わせ", admins_contact_index_path, class: 'border border-dark rounded nav-link text-body' %></li>
+          <li><%= link_to "ジャンル", admins_genres_path, class: 'border border-dark rounded nav-link text-body' %></li>
+          <li><%= link_to "料理一覧", admins_cuisines_path, class: 'border border-dark rounded nav-link text-body' %></li>
+          <li><%= link_to "会員一覧", admins_customers_path, class: 'border border-dark rounded nav-link text-body' %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'border border-dark rounded nav-link text-body' %></li>
+        <% else %>
+          <li><%= link_to "料理一覧", cuisines_path, class: 'border border-dark rounded nav-link text-body mr-4' %></li>
+          <li><%= link_to "About", about_path, class: 'border border-dark rounded nav-link text-body mr-4' %></li>
+          <li><%= render 'layouts/logo' %></li>
+          <li><%= link_to "新規登録", new_customer_registration_path, class: 'border border-dark rounded nav-link text-body mr-4' %></li>
+          <li><%= link_to "ログイン", new_customer_session_path, class: 'border border-dark rounded nav-link text-body' %></li>
+          <li><%= render 'layouts/humberger' %></li>
+        <% end %>
+        </ul>
       </nav>
+      </div>
     </header>
-    <%= yield %>
+    <div class="wrapper"><%= yield %></div>
   </body>
 
   <footer>
-  <div class="footer side_side border-dark border-top">
+  <div class="footer border-top">
     <p class="text-center mt-3">(c) All rights Cooking_ingredients</p>
-    <p class="text_left"><%= render 'layouts/search' %></p>
   </div>
 </footer>
 </html>

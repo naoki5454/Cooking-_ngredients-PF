@@ -1,13 +1,18 @@
-<h3><%= @cuisine.cuisine_name %>へのいいね一覧</h3>
-
-<table>
-  <% @favorites.each do |favorites| %>
-  <tr>
-    <td>
-      <%= link_to customer_path(favorites.customer) do %>
-      <%= favorites.customer.name %>
+<h3 class="title"><%= @cuisine.cuisine_name %>へのいいね一覧</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <table class="col table">
+      <% @favorites.each do |favorites| %>
+      <tr>
+        <td class="text-center">
+          <%= link_to customer_path(favorites.customer) do %>
+          <%= favorites.customer.name %> さん
+          <% end %>
+        </td>
+      </tr>
       <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+    </table>
+    <div class="col"></div>
+  </div>
+</div>

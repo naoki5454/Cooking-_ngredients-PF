@@ -1,0 +1,41 @@
+<% if customer_signed_in? %>
+<div id="container">
+  <div id="theTarget">
+    <div>
+      <p class="text-center pt-5 p" width="300px">
+        あなたの自慢のレシピを</br>
+        投稿するもメモとして残すも</br>
+        ご自由にお使いください
+      </p>
+    </div>
+    <div class="image2"></div>
+    <div class="image3"></div>
+    <div class="image4"></div>
+    <div class="image5"></div>
+  </div>
+</div>
+<% else %>
+<div id="container">
+  <div id="theTarget">
+    <div>
+      <p class="text-center pt-5 p">
+        めんどくさがり屋のあなたでも</br>
+        意外にも簡単に自炊が始められる</br>
+        レシピが勢揃いしています。
+      </p>
+    </div>
+    <div class="image2"></div>
+    <div class="image3"></div>
+    <div class="image4"></div>
+    <div class="image5"></div>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col text-right">
+    <%= link_to "登録済みのかた", new_customer_session_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="col">
+    <%= link_to "登録まだの方", new_customer_registration_path, class: 'btn btn-success' %>
+  </div>
+</div>
+<% end %>
