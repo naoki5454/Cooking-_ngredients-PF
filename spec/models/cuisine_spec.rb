@@ -4,9 +4,7 @@ RSpec.describe 'Cuisineモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
     subject { cuisine.valid? }
-
     let(:cuisine) { build(:cuisine) }
-
     context 'cuisine_nameカラム' do
       it '空欄でないこと' do
         cuisine.cuisine_name = ''
