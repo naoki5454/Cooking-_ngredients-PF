@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe 'Customerモデルのテスト', type: :model do
+RSpec.describe 'Contactモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
-    subject { customer.valid? }
+    subject { contact.valid? }
 
     let(:contact) { build(:contact) }
 
     context 'nameカラム' do
       it '空欄でないこと' do
-        customer.name = ''
+        contact.name = ''
         is_expected.to eq false
       end
     end
-    context 'k_nameカラム' do
+    context 'messageカラム' do
       it '空欄でないこと' do
-        customer.k_name = ''
+        contact.message = ''
         is_expected.to eq false
       end
     end

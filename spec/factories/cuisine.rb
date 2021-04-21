@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :customer do
+  factory :cuisine do
     cuisine_name { "test" }
     material_introduction { "testtest" }
     introduction { "testtest" }
