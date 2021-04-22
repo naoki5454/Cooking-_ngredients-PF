@@ -5,8 +5,11 @@ class Public::CuisineCommentsController < ApplicationController
     cuisine = Cuisine.find(params[:cuisine_id])
     comment = current_customer.cuisine_comments.new(cuisine_comments_params)
     comment.cuisine_id = cuisine.id
-    comment.save
-    redirect_to cuisine_path(cuisine)
+    if comment.save
+      redirect_to cuisine_path(cuisine)
+    else
+      render 'show'
+    end
   end
 
   private
