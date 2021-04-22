@@ -18,6 +18,18 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.notice {
+  background-color: #66cdaa;
+  color: #ffffff;
+  text-align: center;
+}
+
+.alert {
+  background-color: #ff6347;
+  color: #ffffff;
+  text-align: center;
+}
+
 html{
   height: 100%;
 }
