@@ -1,54 +1,70 @@
-<h3>料理詳細</h3>
-<div>
-  <div>
-    <div>
-      <%= attachment_image_tag @cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %>
-    </div>
-    <div>
-      <%= @cuisine.cuisine_name %>
-    </div>
-    <div>
-      <%= @cuisine.time %>分
-    </div>
-    <div>
-      <%= @cuisine.material_introduction %>
-    </div>
-    <div>
-      <%= @cuisine.introduction %>
-    </div>
-    <% if customer_signed_in? %>
-      <div id = <%= "cuisine_#{ @cuisine.id }" %>>
-        <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine %>
-      </div>
-    <% else %>
-      <span class="fas fa-heart heart_red"><%= @cuisine.cuisine_favorites.count %></span>
-    <% end %>
-    <div>
+<h3 class="title">料理詳細</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <table class="table col-4">
+      <tr>
+        <td></td>
+        <td width="50px"><%= attachment_image_tag @cuisine, :cuisine_image, :fill, 182, 100, format: 'jpeg' %></td>
+        <td>
+          <% if customer_signed_in? %>
+          <div id=<%= "cuisine_buttons_#{ @cuisine.id }" %>>
+            <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine, customer: @customer %>
+          </div>
+          <% end %>
+          <div class="far fa-comment-dots"><%= @cuisine.cuisine_comments.count %>コメント</div>
+        </td>
+      </tr>
+      </tr>
+      <tr height="50px">
+        <td width="150">料理名</td>
+        <td><%= @cuisine.cuisine_name %></td>
+      </tr>
+      <tr height="50px">
+        <td>調理時間</td>
+        <td><%= @cuisine.time %>分</td>
+      </tr>
+      <tr height="50px">
+        <td>材料</td>
+        <td><%= simple_format(@cuisine.material_introduction) %></td>
+      </tr>
+      <tr height="50px">
+        <td>調理工程</td>
+        <td><%= simple_format(@cuisine.introduction) %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <% if customer_signed_in? %>
+          <%= link_to "編集", edit_cuisine_path, class: 'btn btn-success px-4' %>
+          <% end %>
+        </td>
+      </tr>
       <% if customer_signed_in? %>
-      <%= link_to "編集", edit_cuisine_path, class: 'btn btn-success px-4' %>
+      <tr>
+        <td></td>
+        <td class="mt-2">
+            <%= form_with(model:[@cuisine, @comment], remote: true) do |f| %>
+            <%= render 'layouts/errors', obj:@cuisine %>
+            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+            <% end %>
+        </td>
+      </tr>
       <% end %>
-    </div>
+      <tr>
+        <td></td>
+        <td>
+          <div id="comments_area">
+            <%= render 'public/cuisine_comments/comments', cuisine: @cuisine, cuisine_comment: @cuisine_comment %>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+    <%= render 'public/genres/index', genres: @genres %>
+    <div class="col"></div>
   </div>
 </div>
 
-<h3>ジャンル一覧</h3>
-<table>
-  <% @genres.each do |genre| %>
-  <tr>
-    <td>
-      <%= link_to genre_path(genre) do %>
-      <%= genre.genre_name %>
-      <% end %>
-    </td>
-  </tr>
-   <% end %>
-</table>
-<%= paginate @genres %>
-<% if customer_signed_in? %>
-<div id = <%= "cuisine_#{ @cuisine.id }" %>>
-  <%= render 'public/cuisine_comments/comments_form', cuisine: @cuisine, cuisine_comments: @cuisine_comments %>
-</div>
-<table>
-  <%= render 'public/cuisine_comments/comments_index', cuisine: @cuisine %>
-</table>
-<% end %>
+

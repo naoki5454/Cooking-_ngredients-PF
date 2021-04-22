@@ -1,22 +1,41 @@
-<h3><%= @cuisine.cuisine_name %>の編集</h3>
+<h3 class="title"><%= @cuisine.cuisine_name %>の編集</h3>
 
-<div>
-  <div>
-    <%= form_with model: @cuisine, local:true do |f| %>
-    <label>料理画像</label>
-    <%= f.file_field :cuisine_image %>
-    <label>料理名</label>
-    <%= f.text_field :cuisine_name, autofocus: true, placeholder:"親子丼"%>
-    <label>ジャンル</label>
-    <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name,  {prompt: "--選択してください--"}) %>
-    <label>調理時間</label>
-    <%= f.text_field :time, autofocus: true, placeholder:"10" %>分
-    <div><%= f.label "材料" %></div>
-    <%= f.text_area :material_introduction, placeholder: "かいわれ=>ひとつかみなど", autofocus: true %>
-    <label>説明</label>
-    <%= f.text_area :introduction, autofocus: true, placeholder:"工程など" %>
-
-    <%= f.submit '保存', class: 'btn btn-success px-4' %>
+<div class="container-fluid">
+  <div class="row">
+   <div class="col"></div>
+   <%= form_with model: @cuisine, local:true do |f| %>
+   <%= render 'layouts/errors', obj:@cuisine %>
+    <table class="table col">
+        <tr>
+          <td><label>料理画像</label></td>
+          <td><%= f.file_field :cuisine_image %></td>
+        </tr>
+        <tr>
+          <td><label>料理名</label></td>
+          <td><%= f.text_field :cuisine_name, autofocus: true, placeholder:"親子丼"%></td>
+        </tr>
+        <tr>
+          <td><label>ジャンル</label></td>
+          <td><%= f.collection_select(:genre_id, Genre.all, :id, :genre_name,  {prompt: "--選択してください--"}) %></td>
+        </tr>
+        <tr>
+          <td><label>調理時間</label></td>
+          <td><%= f.text_field :time, autofocus: true, placeholder:"10" %>分</td>
+        </tr>
+        <tr>
+          <td><%= f.label "材料" %></td>
+          <td><%= f.text_area :material_introduction, placeholder: "かいわれ=>ひとつかみなど", autofocus: true %></td>
+        </tr>
+        <tr>
+          <td><label>説明</label></td>
+          <td><%= f.text_area :introduction, autofocus: true, placeholder:"工程など" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit '保存', class: 'btn btn-success px-4' %></td>
+        </tr>
+    </table>
     <% end %>
+    <div class="col"></div>
   </div>
 </div>

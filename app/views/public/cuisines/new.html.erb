@@ -1,44 +1,40 @@
-<h3>料理投稿ページ</h3>
-<div>
-  <div>
+<h3 class="title">料理投稿ページ</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
     <%= form_with model: @cuisine, url: cuisines_path, metod: :post, local:true do |f| %>
-    <div>
-      <%= f.file_field :cuisine_image %>
-    </div>
-    <div>
-      <%= f.label "ジャンル" %>
-    </div>
-    <div>
-      <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name,  {prompt: "--選択してください--"}) %>
-      </div>
-      <div>
-      <%= f.label "料理名" %>
-    </div>
-    <div>
-      <%= f.text_field :cuisine_name, placeholder: "親子丼", autofocus: true %>
-    </div>
-    <div>
-      <%= f.label "調理時間" %>
-    </div>
-    <div>
-      <%= f.text_field :time, placeholder: "10", autofocus: true %>分
-    </div>
-    <div>
-      <%= f.label "材料" %>
-    </div>
-    <div>
-      <%= f.text_area :material_introduction, placeholder: "かいわれ=>ひとつかみなど", autofocus: true %>
-    </div>
-    <div>
-      <%= f.label "説明" %>
-    </div>
-    <div>
-      <%= f.text_area :introduction, placeholder: "工程など", autofocus: true %>
-    </div>
-    <div>
-      <%= f.submit '投稿', class: 'btn btn-success px-4' %>
-    </div>
-      <% end %>
-    </div>
+    <%= render 'layouts/errors', obj:@cuisine %>
+    <table class="table col">
+      <tr>
+        <td></td>
+        <td><%= f.file_field :cuisine_image %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "ジャンル" %></td>
+        <td><%= f.collection_select(:genre_id, Genre.all, :id, :genre_name,  {prompt: "--選択してください--"}) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "料理名" %></td>
+        <td><%= f.text_field :cuisine_name, placeholder: "親子丼", autofocus: true %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "調理時間" %></td>
+        <td><%= f.text_field :time, placeholder: "10", autofocus: true %>分</td>
+      </tr>
+      <tr>
+        <td><%= f.label "材料" %></td>
+        <td><%= f.text_area :material_introduction, placeholder: "かいわれ=>ひとつかみなど", autofocus: true %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "説明" %></td>
+        <td><%= f.text_area :introduction, placeholder: "工程など", autofocus: true %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '投稿', class: 'btn btn-success px-4' %></td>
+      </tr>
+    </table>
+    <% end %>
+    <div class="col"></div>
   </div>
 </div>

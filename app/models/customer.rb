@@ -6,8 +6,8 @@ class Customer < ApplicationRecord
 
         validates :name, presence: true
         validates :k_name, presence: true
-        validates :nickname, presence: true
-        validates :email, presence: true
+        validates :nickname, presence: true, uniqueness: true
+        validates :email, presence: true, uniqueness: true
 
         attachment :customer_image
         has_many :cuisines, dependent: :destroy

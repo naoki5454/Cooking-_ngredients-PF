@@ -1,24 +1,30 @@
-<div class="page-header">
-  <h1>お問い合わせ</h1>
+<h3 class="title">お問い合わせ確認</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <%= form_with model: @contact, url: contact_path, local: true do |f| %>
+    <table class="table">
+      <tr>
+        <th>名前</th>
+        <td>
+          <%= f.hidden_field :name %>
+          <%= @contact.name %>
+        </td>
+      </tr>
+      <tr>
+        <th>お問い合わせ内容</th>
+        <td>
+          <%= f.hidden_field :message %>
+          <%= simple_format(@contact.message) %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '送信', :class => 'btn btn-primary' %></td>
+      </tr>
+      <%= f.hidden_field :customer_id %>
+    </table>
+    <% end %>
+    <div class="col"></div>
+  </div>
 </div>
-
-<%= form_with model: @contact, url: contact_path, local: true do |f| %>
-  <table class="table">
-    <tr>
-      <th>名前</th>
-      <td>
-        <%= f.hidden_field :name %>
-        <%= @contact.name %>
-      </td>
-    </tr>
-    <tr>
-      <th>お問い合わせ内容</th>
-      <td>
-        <%= f.hidden_field :message %>
-        <%= simple_format(@contact.message) %>
-      </td>
-    </tr>
-    <%= f.hidden_field :customer_id %>
-  </table>
-  <%= f.submit '送信', :class => 'btn btn-primary' %>
-<% end %>

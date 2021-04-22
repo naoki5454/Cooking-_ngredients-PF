@@ -1,26 +1,28 @@
-<div class="container">
-  <div class="row col-10 mx-auto">
-    <table class="table table-hover table-inverse">
-      <thead>
-        <tr>
-          <th class="kensaku">検索結果</th>
-        </tr>
-      </thead>
-    <% if @range == '1' %>
-      <tbody>
-        <% @cuisine.each do |cuisine| %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <table class="table table-hover table-inverse">
+        <thead>
           <tr>
-            <td class="text-right">
+            <th class="kensaku">検索結果</th>
+          </tr>
+        </thead>
+        <% if @range == '1' %>
+        <tbody>
+          <% @cuisine.each do |cuisine| %>
+          <tr>
+            <td class="text-center">
               <%= link_to cuisine_path(cuisine) do %>
               <%= cuisine.cuisine_name %>
               <% end %>
             </td>
           </tr>
-        <% end %>
-      </tbody>
-      <% else @range == '2' %>
-      <tbody>
-        <% @genres.each do |genre| %>
+          <% end %>
+        </tbody>
+        <% else @range == '2' %>
+        <tbody>
+          <% @genres.each do |genre| %>
           <tr>
             <td class="text-center">
               <%= link_to genre_path(genre) do %>
@@ -29,8 +31,10 @@
             </td>
           </tr>
           <% end %>
-      </tbody>
-    <% end %>
-    </table>
+        </tbody>
+        <% end %>
+      </table>
+      <div class="col-4"></div>
+    </div>
   </div>
 </div>

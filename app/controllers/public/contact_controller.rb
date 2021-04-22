@@ -14,8 +14,11 @@ class Public::ContactController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
-    @contact.save
-    redirect_to contact_thanks_path
+    if @contact.save
+      redirect_to contact_thanks_path
+    else
+      render 'new'
+    end
   end
 
   def thank
