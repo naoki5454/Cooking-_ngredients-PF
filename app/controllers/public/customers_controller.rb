@@ -17,6 +17,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customer_path(@customer)
+      flash[:notice] = "編集成功しました。"
     else
       render :edit
     end
@@ -27,12 +28,14 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_valid: false)
     reset_session
     redirect_to root_path
+    flash[:notice] = "退会しました"
   end
 
   def correct_customer
     @customer = Customer.find(params[:id])
     unless @customer.id == current_customer.id
       redirect_to root_path
+      flash[:alert] = "urlから直打ちしないでください。（他人のプロフィール編集ページです）"
     end
   end
 

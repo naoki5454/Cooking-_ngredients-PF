@@ -3,6 +3,7 @@ class Public::CuisinesController < ApplicationController
   before_action :correct_cuisine, only: [:edit]
 
   def search
+    #flash[:alert] = "空欄で検索しないでください。"
     redirect_to root_path if params[:range] == "" #rangeが入力されていないとトップページに飛ぶ
     @range = params[:range]
 		@search = params[:search]
@@ -39,6 +40,7 @@ class Public::CuisinesController < ApplicationController
     @cuisine.customer_id = current_customer.id
     if @cuisine.save
       redirect_to cuisine_path(@cuisine)
+      flash[:notice] = "投稿成功しました。"
     else
       render "new"
     end
@@ -52,6 +54,7 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.find(params[:id])
     if @cuisine.update(cuisine_params)
       redirect_to cuisine_path(@cuisine)
+      flash[:notice] = "編集成功しました。"
     else
       render "edit"
     end

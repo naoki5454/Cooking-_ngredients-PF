@@ -6,3 +6,24 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
+  activerecord:
+    attributes:
+      contact:
+        name: 名前
+        message: お問い合わせ内容
+      cuisine_comment:
+        comment: コメント
+      cuisine:
+        genre: ジャンル
+        cuisine_name: 料理名
+        material_introduction: 材料
+        introduction: 工程
+        time: 調理時間
+      customer:
+        email: メールアドレス
+        name: 名前
+        k_name: フリガナ
+        nickname: ニックネーム
+        Password: パスワード
+      genre:
+      genre_name: ジャンル名

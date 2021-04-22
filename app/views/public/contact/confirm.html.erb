@@ -18,9 +18,12 @@
           <%= simple_format(@contact.message) %>
         </td>
       </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '送信', :class => 'btn btn-primary' %></td>
+      </tr>
       <%= f.hidden_field :customer_id %>
     </table>
-    <%= f.submit '送信', :class => 'btn btn-primary' %>
     <% end %>
     <div class="col"></div>
   </div>
