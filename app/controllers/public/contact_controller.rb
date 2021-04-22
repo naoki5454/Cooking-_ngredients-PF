@@ -16,6 +16,7 @@ class Public::ContactController < ApplicationController
     @contact.customer_id = current_customer.id
     if @contact.save
       redirect_to contact_thanks_path
+      flash[:notice] = "送信完了しました。"
     else
       render 'new'
     end

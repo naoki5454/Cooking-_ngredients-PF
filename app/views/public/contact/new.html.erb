@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col"></div>
     <%= form_with model: @contact, url: contact_confirm_path, local: true do |f| %>
-    <%= render 'layouts/errors', obj:@contact %>
+    <div class="text-danger"><%= render 'layouts/errors', obj:@contact %></div>
     <table class="table">
       <tr>
         <th>名前<span class="text-danger">（必須）</span></th>

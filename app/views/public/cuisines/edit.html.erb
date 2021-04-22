@@ -4,7 +4,7 @@
   <div class="row">
    <div class="col"></div>
    <%= form_with model: @cuisine, local:true do |f| %>
-   <%= render 'layouts/errors', obj:@cuisine %>
+   <div class="text-danger"><%= render 'layouts/errors', obj:@cuisine %></div>
     <table class="table col">
         <tr>
           <td><label>料理画像</label></td>

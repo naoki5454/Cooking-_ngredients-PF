@@ -54,7 +54,7 @@
       <td></td>
       <td class="mt-2">
         <%= form_with(model:[@cuisine, @comment], remote: true) do |f| %>
-        <div id="comments_error">
+        <div id="comments_error" class="text-danger">
           <%= render 'layouts/errors', obj: @comment %>
         </div>
         <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>

@@ -13,7 +13,7 @@ class Customers::SessionsController < Devise::SessionsController
       @customer = Customer.find_by(email: params[:customer][:email])
       if @customer && @customer.is_valid == false
         redirect_to root_path
-        flash[:notice] = "退会済みのアカウントです"
+        flash[:alert] = "退会済みのアカウントです"
       else
         super
       end
