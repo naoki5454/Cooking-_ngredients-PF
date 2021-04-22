@@ -1,4 +1,7 @@
 <% if obj.errors.any? %>
+  <h4>
+    <%= pluralize(obj.errors.count, "error") %> prohibited this model from being saved:
+  </h4>
   <div id="error_explanation">
     <ul>
       <% obj.errors.full_messages.each do |message| %>
