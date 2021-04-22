@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <h4>
-    <%= pluralize(obj.errors.count, "error") %> prohibited this model from being saved:
+    <%= obj.errors.count %> 件のエラーがあります。
   </h4>
   <div id="error_explanation">
     <ul>
