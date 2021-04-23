@@ -64,6 +64,7 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.find(params[:id])
     unless @cuisine.customer.id == current_customer.id
       redirect_to root_path
+      flash[:alert] = "urlから直打ちしないでください。（他人の料理編集ページです）"
     end
   end
 

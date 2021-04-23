@@ -35,7 +35,7 @@
       <tr>
         <td></td>
         <td>
-          <% if customer_signed_in? %>
+          <% if @cuisine.customer == current_customer %>
           <%= link_to "編集", edit_cuisine_path, class: 'btn btn-success px-4' %>
           <% end %>
         </td>
