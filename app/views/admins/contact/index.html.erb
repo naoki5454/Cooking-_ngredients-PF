@@ -1,13 +1,19 @@
 <h3 class="text-center mt-5">お問い合わせ一覧</h3>
-    <table align="center" class="mt-5">
-      <% @contacts.each do |contacts| %>
-      <tr>
-        <td><%= contacts.id %></td>
-        <td>
-          <%= link_to admins_contact_path(contacts) do %>
-          <%= contacts.name %> さん
-          <% end %>
-          </td>
-      </tr>
+<table align="center" class="mt-5">
+  <% @contacts.each do |contacts| %>
+  <tr>
+    <td height="50"><%= contacts.id %></td>
+    <td>
+      <%= link_to admins_contact_path(contacts) do %>
+      <%= contacts.name %> さん
       <% end %>
-    </table>
+    </td>
+    <td>対応状態:</td>
+    <% if contacts.is_valid == true %>
+    <th class="text-success">未対応</th>
+    <% else %>
+    <th class="text-secondary">対応済み</th>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

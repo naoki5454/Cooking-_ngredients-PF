@@ -1,0 +1,25 @@
+<h3 class="text-center mt-5">お問い合わせ履歴</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <table class="mt-5 table col">
+      <% @contacts.each do |contacts| %>
+      <tr>
+        <td height="50">依頼名:</td>
+        <td>
+          <%= link_to contact_path(contacts) do %>
+          <%= contacts.name %>
+          <% end %>
+        </td>
+        <td>対応状態</td>
+        <% if contacts.is_valid == true %>
+        <th class="text-success">未対応</th>
+        <% else %>
+        <th class="text-secondary">対応済み</th>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+    <div class="col"></div>
+  </div>
+</div>

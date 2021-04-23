@@ -117,3 +117,11 @@ Admin.create(
     鰹節や生姜を入れも美味しい',
     time: '10'
   )
+
+  10.times do |n|
+    Contact.create(
+     customer_id: "#{n + 1}",
+     name: "みかん#{n + 1}",
+     message: "洋食#{n + 1}のジャンルを追加して欲しいです。",
+    )
+  end

@@ -5,6 +5,15 @@ class Public::ContactController < ApplicationController
     @contact = Contact.new
   end
 
+  def index
+    @customer = current_customer
+    @contacts = @customer.contact
+  end
+
+  def show
+    @contact = Contact.find(params[:id])
+  end
+
   def confirm
     # 入力値のチェック
     contact = params.require(:contact).permit(:name, :message)
