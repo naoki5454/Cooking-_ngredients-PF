@@ -26,10 +26,9 @@ Rails.application.routes.draw do
     scope module: :public do #routeが被らないように
     resources :customers, only: [:show, :edit, :update]
     resources :genres, only: [:show, :index]
-    resources :contact, only: [:new, :show, :index]
+    resources :contact, only: [:new, :show, :create, :index]
     post 'contact/confirm' => 'contact#confirm'               # 確認画面
-    post 'contact' => 'contact#create'
-    get 'contact/thanks' => 'contact#thank'
+    get 'contacts/thanks' => 'contact#thank', as: 'contacts_thanks'
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
