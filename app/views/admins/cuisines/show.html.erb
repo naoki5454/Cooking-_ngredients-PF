@@ -5,8 +5,8 @@
     <div class="col-4"></div>
     <table class="col">
       <tr>
-        <td><%= attachment_image_tag @cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %></td>
-        <td></td>
+        <td width="150px"><%= attachment_image_tag @cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %></td>
+        <td width="150px"></td>
       </tr>
       <tr>
         <td>料理名</td>
@@ -21,7 +21,7 @@
         <td class="overflow-wrap"><%= @cuisine.introduction %></td>
       </tr>
        <tr>
-         <th><%= link_to "投稿削除", admins_cuisine_path(@cuisine), method: :delete, "date-confirm" => "本当に削除しますか？" %></th>
+         <th><%= link_to "投稿削除", admins_cuisine_path(@cuisine), method: :delete, "date-confirm" => "本当に削除しますか？", class: 'btn btn-danger px-4' %></th>
        </tr>
     </table>
     <table class="col">
