@@ -11,75 +11,41 @@ Admin.create(
   password: 'testtest',
   )
 
-Customer.create(
-  email: 'mo@mo',
-  password: 'momomo',
-  name: 'もも',
-  k_name: 'モモ',
-  nickname: 'もも'
-  )
+  10.times do |n|
+    Customer.create(
+      email: "mo@mo#{n + 1}",
+      password: "momomo#{n + 1}",
+      name: "もも#{n + 1}",
+      k_name: "モモ#{n + 1}",
+      nickname: "もも#{n + 1}"
+    )
+  end
 
-  Genre.create(
-    id: '1',
-    genre_name: '和食'
-  )
+  15.times do |n|
+    Genre.create(
+      id: "#{n + 1}",
+      genre_name: "和食#{n + 1}"
+    )
+  end
 
-  Genre.create(
-    id: '2',
-    genre_name: '洋食'
-  )
-
-  Genre.create(
-    id: '3',
-    genre_name: '中華'
-  )
-
-  Genre.create(
-    id: '4',
-    genre_name: '炒め物'
-  )
-
-  Genre.create(
-    id: '5',
-    genre_name: '煮込み'
-  )
-
-  Genre.create(
-    id: '6',
-    genre_name: '揚げ物'
-  )
-
-  Genre.create(
-    id: '7',
-    genre_name: '盛り付けのみ'
-  )
-
-  Genre.create(
-    id: '8',
-    genre_name: '洗い物したくない時'
-  )
-
-  Genre.create(
-    id: '9',
-    genre_name: '少し頑張りたい時'
-  )
-
-  Cuisine.create(
-    genre_id: '1',
-    customer_id: '1',
-    cuisine_name: 'お好み焼き',
-    cuisine_image: open("./app/assets/images/image/TCPAKU0649_TP_V.jpg"),
-    material_introduction:
-    '４人分
-    キャベツ =>半玉
-    たこ焼き粉 =>500g',
-    introduction:
-    '工程
-    材料を切って混ぜて焼く
-    !point!
-    先に鉄板を温めておくと綺麗に焼ける',
-    time: '15'
-  )
+  15.times do |n|
+    Cuisine.create(
+      genre_id: "#{n + 1}",
+      customer_id: "#{n + 1}",
+      cuisine_name: "お好み焼き#{n + 1}",
+      cuisine_image: open("./app/assets/images/image/TCPAKU0649_TP_V.jpg"),
+      material_introduction:
+      '４人分
+      キャベツ =>半玉
+      たこ焼き粉 =>500g',
+      introduction:
+      '工程
+      材料を切って混ぜて焼く
+      !point!
+      先に鉄板を温めておくと綺麗に焼ける',
+      time: '15'
+    )
+  end
 
   Cuisine.create(
     genre_id: '3',
