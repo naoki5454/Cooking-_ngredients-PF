@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_041420) do
     t.integer "customer_id"
     t.string "name"
     t.text "message"
+    t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

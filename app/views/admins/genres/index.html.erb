@@ -17,8 +17,8 @@
     <div class="col"></div>
     <table>
       <% @genres.each do |genre| %>
-      <tr class="mt-3">
-        <td><%= genre.genre_name %></td>
+      <tr>
+        <td height="50"><%= genre.genre_name %></td>
         <td><%= link_to "編集", edit_admins_genre_path(genre) %></td>
       </tr>
       <% end %>

@@ -2,24 +2,24 @@
     <%= form_with model: @customer, url: admins_customer_path, local:true do |f| %>
     <table align="center" class="mt-5">
       <tr>
-        <td>会員ID</td>
+        <td height="50">会員ID</td>
         <td><%= @customer.id %></td>
       </tr>
       <tr>
-        <td>名前</td>
+        <td height="50">名前</td>
         <td><%= f.text_field :name, autofocus: true %></td>
       </tr>
       <tr>
-        <td>フリガナ</td>
+        <td height="50">フリガナ</td>
         <td><%= f.text_field :k_name, autofocus: true %></td>
       </tr>
       <tr>
-        <td>メールアドレス</td>
+        <td height="50">メールアドレス</td>
         <td><%= f.text_field :email, autofocus: true %></td>
       </tr>
       <tr>
-        <td>会員ステータス</td>
-        <th>
+        <td height="50">会員ステータス</td>
+        <th height="50">
           <%= f.radio_button :is_valid, :true %>
           <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
           <%= f.radio_button :is_valid, :false, class: "ml-5" %>

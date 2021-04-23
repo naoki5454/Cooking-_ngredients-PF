@@ -1,11 +1,11 @@
 <h3 class="text-center mt-5">会員情報</h3>
-    <table align="center" class="mt-5">
+    <table align="center" class="mt-5 mb-5">
       <tr>
         <th>会員一覧</th>
       </tr>
       <% @customers.each do |customer| %>
       <tr>
-        <td>
+        <td height="50">
           <%= link_to admins_customer_path(customer) do %>
           <%= attachment_image_tag @customer, :customer_image_id, :fill, 100, 100, format: 'jpeg' %>
           <% end %>

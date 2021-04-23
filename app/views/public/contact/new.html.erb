@@ -14,7 +14,7 @@
         <td><%= f.text_area :message %></td>
       </tr>
       <tr>
-        <td></td>
+        <td><%= link_to "履歴", contact_index_path, class: 'btn btn-success' %></td>
         <td><%= f.submit '確認', class: 'btn btn-primary' %></td>
       </tr>
     </table>

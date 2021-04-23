@@ -11,8 +11,8 @@
           <p><%= simple_format(@customer.introduction) %></p>
       </div>
       <div>
-        <%= link_to "料理の投稿", new_cuisine_path, class: 'btn btn-primary' %>
         <%= link_to "編集", edit_customer_path, class: 'btn btn-success	' %>
+        <%= link_to "料理の投稿", new_cuisine_path, class: 'btn btn-primary' %>
       </div>
       <%= render 'public/genres/index', genres: @genres %>
     </div>
