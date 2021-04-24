@@ -1,12 +1,12 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!, only: [:edit, :update, :withdraw]
+  before_action :authenticate_customer!, only: [:show, :edit, :update, :withdraw]
   before_action :correct_customer, only: [:edit, :update, :withdraw]
 
   def show
     @customer = Customer.find(params[:id])
     @cuisine = @customer.cuisines
     @cuisines = @cuisine.page(params[:page]).per(5)
-    @genres = Genre.limit(7)
+    @genres = Genre.limit(13)
   end
 
   def edit
@@ -21,6 +21,12 @@ class Public::CustomersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def favorite
+    @customer = current_customer
+    @favorites = @customer.cuisine_favorites.page(params[:page]).per(5)
+    @genres = Genre.limit(13)
   end
 
   def withdraw

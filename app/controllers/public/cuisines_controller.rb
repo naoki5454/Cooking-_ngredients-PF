@@ -4,11 +4,14 @@ class Public::CuisinesController < ApplicationController
 
   def search
     #flash[:alert] = "空欄で検索しないでください。"
-    redirect_to root_path if params[:range] == "" #rangeが入力されていないとトップページに飛ぶ
+    #redirect_to root_path if params[:range] == "" #rangeが入力されていないとトップページに飛ぶ
     @range = params[:range]
 		@search = params[:search]
 		@word = params[:word]
-		if @range == '1'
+		if @range == ''
+		  redirect_to root_path
+		  flash[:alert] = "ジャンルを選択してください。"
+		elsif  @range == '1'
 			@cuisine = Cuisine.search(@search,@word)
 		elsif @range == '2'
 			@genres = Genre.search(@search,@word)
@@ -21,13 +24,13 @@ class Public::CuisinesController < ApplicationController
 
   def index
     @cuisines = Cuisine.page(params[:page]).per(6)
-    @genres = Genre.limit(8)
+    @genres = Genre.limit(13)
   end
 
   def show
     @comment = CuisineComment.new
     @cuisine = Cuisine.find(params[:id])
-    @genres = Genre.page(params[:page]).per(8)
+    @genres = Genre.limit(13)
   end
 
   def favorite #料理へのいいね一覧

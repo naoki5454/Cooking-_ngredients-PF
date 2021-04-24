@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   sessions: 'admins/sessions'
   }
   namespace :admins do
-    resources :customers, only: [:show, :index, :edit, :update, :destroy]
-    resources :cuisines, only: [:index, :show, :destroy]
-    resources :genres, only: [:show, :index, :create, :edit, :update, :destroy]
-    resources :contact, only: [:show, :index, :update]
+    resources :customers, only: %i[show index edit update destroy]
+    resources :cuisines, only: %i[index show destroy]
+    resources :genres, only: %i[show index create edit update destroy]
+    resources :contact, only: %i[show index update]
   end
 
   devise_for :customers, skip: :all
@@ -24,18 +24,19 @@ Rails.application.routes.draw do
   end
 
     scope module: :public do #routeが被らないように
-    resources :customers, only: [:show, :edit, :update]
-    resources :genres, only: [:show, :index]
-    resources :contact, only: [:new, :show, :create, :index]
+    resources :customers, only: %i[show edit update]
+    get 'customer/favorite' => 'customers#favorite', as: 'customer_favorite'
+    resources :genres, only: %i[show index]
+    resources :contact, only: %i[new show create index]
     post 'contact/confirm' => 'contact#confirm'               # 確認画面
     get 'contacts/thanks' => 'contact#thank', as: 'contacts_thanks'
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
-    resources :cuisines, only: [:new, :index, :show, :create, :index, :edit, :update, :destroy] do
+    resources :cuisines, only: %i[new index show create index edit update destroy] do
       get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
       get :search, on: :collection                            #検索機能
-      resource :cuisine_favorites, only: [:create, :destroy]  #いいね機能
-      resources :cuisine_comments, only: [:create, :destroy]  #コメント機能
+      resource :cuisine_favorites, only: %i[create destroy]  #いいね機能
+      resources :cuisine_comments, only: %i[create destroy]  #コメント機能
     end
   end
 end

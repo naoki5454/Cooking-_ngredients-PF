@@ -17,7 +17,7 @@ class Cuisine < ApplicationRecord
   end
 
   #部分一致検索のため
-  def self.search(search,word)
+  def self.search(_search, word)
     Cuisine.where(['cuisine_name LIKE ?', "%#{word}%"])
   end
 
