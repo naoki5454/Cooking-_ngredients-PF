@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :cuisine_comment do
-    comment { "test" }
+    comment { 'test' }
   end
 end

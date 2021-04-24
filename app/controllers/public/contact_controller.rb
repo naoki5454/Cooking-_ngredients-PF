@@ -25,16 +25,16 @@ class Public::ContactController < ApplicationController
     @contact.customer_id = current_customer.id
     if @contact.save
       redirect_to contacts_thanks_path
-      flash[:notice] = "送信完了しました。"
+      flash[:notice] = '送信完了しました。'
     else
       render 'new'
     end
   end
 
-  def thank
-  end
+  def thank; end
 
   private
+
   def contact_params
     params.require(:contact).permit(:name, :message, :customer_id)
   end

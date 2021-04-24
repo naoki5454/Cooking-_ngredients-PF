@@ -1,5 +1,4 @@
 class Cuisine < ApplicationRecord
-
   validates :cuisine_name, presence: true
   validates :material_introduction, presence: true
   validates :introduction, presence: true
@@ -11,14 +10,13 @@ class Cuisine < ApplicationRecord
   has_many :cuisine_comments, dependent: :destroy
   has_many :cuisine_favorites, dependent: :destroy
 
-  #いいねがついているかの判断
+  # いいねがついているかの判断
   def favorited_by?(customer)
     cuisine_favorites.where(customer_id: customer.id).exists?
   end
 
-  #部分一致検索のため
+  # 部分一致検索のため
   def self.search(_search, word)
     Cuisine.where(['cuisine_name LIKE ?', "%#{word}%"])
   end
-
 end

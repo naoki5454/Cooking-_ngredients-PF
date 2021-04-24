@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Cuisineモデルのテスト', type: :model do
-
   describe 'バリデーションのテスト' do
     subject { cuisine.valid? }
     let(:cuisine) { build(:cuisine) }

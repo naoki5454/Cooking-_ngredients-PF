@@ -1,0 +1,20 @@
+#inherit_from: .rubocop_todo.yml
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+#日本語でのコメントのため
+Style/AsciiComments:
+  Enabled: false
+# 自動生成されたファイルを対象外にする
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'spec/**/*'

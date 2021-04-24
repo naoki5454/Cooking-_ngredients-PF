@@ -12,7 +12,7 @@ class Admins::GenresController < ApplicationController
       redirect_to admins_genres_path
     else
       @genres = Genre.all
-      render "index"
+      render 'index'
     end
   end
 
@@ -23,9 +23,9 @@ class Admins::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to admins_genres_path, notice: "更新しました"
+      redirect_to admins_genres_path, notice: '更新しました'
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -36,6 +36,7 @@ class Admins::GenresController < ApplicationController
   end
 
   private
+
   def genre_params
     params.require(:genre).permit(:genre_name)
   end
