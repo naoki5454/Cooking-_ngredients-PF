@@ -7,12 +7,15 @@
         <%= attachment_image_tag @customer, :customer_image, :fill, 100, 100, format: 'jpeg', class: 'maru' %>
       </div>
       <div class="text-box">
-        　<p><%= @customer.nickname %></p>
+        　<p>
+        　  <%= @customer.nickname %>
+        　  <%= link_to "編集", edit_customer_path, class: 'btn btn-success' %>
+        　</p>
           <p><%= simple_format(@customer.introduction) %></p>
       </div>
       <div>
-        <%= link_to "編集", edit_customer_path, class: 'btn btn-success	' %>
-        <%= link_to "料理の投稿", new_cuisine_path, class: 'btn btn-primary' %>
+        <%= link_to "お気に入り", customer_favorite_path, class: 'btn btn-success' %>
+        <%= link_to "投稿", new_cuisine_path, class: 'btn btn-primary' %>
       </div>
       <%= render 'public/genres/index', genres: @genres %>
     </div>

@@ -1,0 +1,41 @@
+<h3 class="title">お気に入り登録したレシピ</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <table class="table col-5">
+      <% @favorites.each do |favorite| %>
+      <tr>
+        <td width="100"><%= attachment_image_tag favorite.cuisine, :cuisine_image, :fill, 100, 100, format: 'jpeg' %></td>
+        <td width="120">
+          <%= link_to cuisine_path(favorite.cuisine) do %>
+          <%= favorite.cuisine.cuisine_name %>
+          <% end %>
+        </td>
+        <td><%= favorite.cuisine.time %>分</td>
+        <td>
+          <% if customer_signed_in? %>
+          <div id=<%= "cuisine_buttons_#{ favorite.cuisine.id }" %>>
+            <%= render 'public/cuisine_favorites/favorites', cuisine: favorite.cuisine %>
+          </div>
+          <% else %>
+            <span class="fas fa-heart heart_red"><%= favorite.cuisine.cuisine_favorites.count %></span>
+          <% end %>
+        </td>
+        <td class="far fa-comment-dots">
+          <%= favorite.cuisine.cuisine_comments.count %>
+          <%= link_to "コメント", cuisine_path(favorite.cuisine) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <div class="col"><%= render 'public/genres/index', genres: @genres %></div>
+    <div class="col"></div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div><%= paginate @favorites %></div>
+    <div class="col"></div>
+  </div>
+</div>

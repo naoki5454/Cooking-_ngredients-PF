@@ -30,7 +30,7 @@ class Public::CuisinesController < ApplicationController
   def show
     @comment = CuisineComment.new
     @cuisine = Cuisine.find(params[:id])
-    @genres = Genre.page(params[:page]).per(8)
+    @genres = Genre.limit(13)
   end
 
   def favorite #料理へのいいね一覧

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
     scope module: :public do #routeが被らないように
     resources :customers, only: [:show, :edit, :update]
+    get 'customer/favorite' => 'customers#favorite', as: 'customer_favorite'
     resources :genres, only: [:show, :index]
     resources :contact, only: [:new, :show, :create, :index]
     post 'contact/confirm' => 'contact#confirm'               # 確認画面
