@@ -2,12 +2,19 @@
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-ClassAndModuleChildren:
-  EnforcedStyle: compact
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
 
 #日本語でのコメントのため
 Style/AsciiComments:
   Enabled: false
+
+MethodLength:
+  CountComments: true  # count full line comments?
+  Max: 12
 # 自動生成されたファイルを対象外にする
 AllCops:
   Exclude:
