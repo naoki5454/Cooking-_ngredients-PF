@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!, only: [:show, :edit, :update, :withdraw]
-  before_action :correct_customer, only: [:edit, :update, :withdraw]
+  before_action :authenticate_customer!, only: %i[show edit update withdraw]
+  before_action :correct_customer, only: %i[edit update withdraw]
 
   def show
     @customer = Customer.find(params[:id])
@@ -17,7 +17,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customer_path(@customer)
-      flash[:notice] = "編集成功しました。"
+      flash[:notice] = '編集成功しました。'
     else
       render :edit
     end
@@ -34,19 +34,18 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_valid: false)
     reset_session
     redirect_to root_path
-    flash[:notice] = "退会しました"
+    flash[:notice] = '退会しました'
   end
 
   def correct_customer
     @customer = Customer.find(params[:id])
-    unless @customer.id == current_customer.id
-      redirect_to root_path
-      flash[:alert] = "urlから直打ちしないでください。（他人のプロフィール編集ページです）"
-    end
+    return if @customer.id == current_customer.id
+
+    redirect_to root_path
+    flash[:alert] = 'urlから直打ちしないでください。（他人のプロフィール編集ページです）'
   end
 
   def customer_params
     params.require(:customer).permit(:nickname, :customer_image, :introduction)
   end
-
 end

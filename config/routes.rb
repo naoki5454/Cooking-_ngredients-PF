@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-
   root to: 'homes#top'
   get '/about' => 'homes#about'
 
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
+    sessions: 'admins/sessions'
   }
   namespace :admins do
     resources :customers, only: %i[show index edit update destroy]
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
     get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
   end
 
-    scope module: :public do #routeが被らないように
+  scope module: :public do # routeが被らないように
     resources :customers, only: %i[show edit update]
     get 'customer/favorite' => 'customers#favorite', as: 'customer_favorite'
     resources :genres, only: %i[show index]
@@ -33,10 +32,10 @@ Rails.application.routes.draw do
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :cuisines, only: %i[new index show create index edit update destroy] do
-      get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
-      get :search, on: :collection                            #検索機能
-      resource :cuisine_favorites, only: %i[create destroy]  #いいね機能
-      resources :cuisine_comments, only: %i[create destroy]  #コメント機能
+      get 'cuisine_favorites' => 'cuisines#favorite', as: 'favorites'
+      get :search, on: :collection                            # 検索機能
+      resource :cuisine_favorites, only: %i[create destroy]  # いいね機能
+      resources :cuisine_comments, only: %i[create destroy]  # コメント機能
     end
   end
 end
