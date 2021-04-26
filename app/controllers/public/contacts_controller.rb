@@ -1,4 +1,4 @@
-class Public::ContactController < ApplicationController
+class Public::ContactsController < ApplicationController
   before_action :authenticate_customer!
 
   def new
@@ -24,8 +24,7 @@ class Public::ContactController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
     if @contact.save
-      redirect_to contacts_thanks_path
-      flash[:notice] = "送信完了しました。"
+      redirect_to contacts_thanks_path, notice: "送信完了しました。"
     else
       render 'new'
     end

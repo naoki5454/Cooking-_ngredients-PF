@@ -3,13 +3,13 @@ class Admins::GenresController < ApplicationController
 
   def index
     @genre = Genre.new
-    @genres = Genre.all
+    @genres = Genre.page(params[:page]).per(8)
   end
 
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admins_genres_path
+      redirect_to admins_genres_path, notice: "作成しました"
     else
       @genres = Genre.all
       render "index"

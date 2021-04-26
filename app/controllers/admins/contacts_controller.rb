@@ -1,4 +1,4 @@
-class Admins::ContactController < ApplicationController
+class Admins::ContactsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
@@ -12,7 +12,7 @@ class Admins::ContactController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-      redirect_to admins_contact_index_path, notice: "更新しました"
+      redirect_to admins_contacts_path, notice: "更新しました"
     else
       render "index", alert: "失敗しました"
     end

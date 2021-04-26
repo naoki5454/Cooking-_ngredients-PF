@@ -10,7 +10,7 @@ class Public::CuisinesController < ApplicationController
 		@word = params[:word]
 		if @range == ''
 		  redirect_to root_path
-		  flash[:alert] = "ジャンルを選択してください。"
+		  flash[:alert] = "空欄があります"
 		elsif  @range == '1'
 			@cuisine = Cuisine.search(@search,@word)
 		elsif @range == '2'
@@ -42,8 +42,7 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.new(cuisine_params)
     @cuisine.customer_id = current_customer.id
     if @cuisine.save
-      redirect_to cuisine_path(@cuisine)
-      flash[:notice] = "投稿成功しました。"
+      redirect_to cuisine_path(@cuisine), notice: "投稿成功しました。"
     else
       render "new"
     end

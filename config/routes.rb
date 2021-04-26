@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :customers, only: %i[show index edit update destroy]
     resources :cuisines, only: %i[index show destroy]
-    resources :genres, only: %i[show index create edit update destroy]
-    resources :contact, only: %i[show index update]
+    resources :genres, only: %i[index create edit update destroy]
+    resources :contacts, only: %i[show index update]
   end
 
   devise_for :customers, skip: :all
@@ -26,13 +26,13 @@ Rails.application.routes.draw do
     scope module: :public do #routeが被らないように
     resources :customers, only: %i[show edit update]
     get 'customer/favorite' => 'customers#favorite', as: 'customer_favorite'
-    resources :genres, only: %i[show index]
-    resources :contact, only: %i[new show create index]
-    post 'contact/confirm' => 'contact#confirm'               # 確認画面
-    get 'contacts/thanks' => 'contact#thank', as: 'contacts_thanks'
-    get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm'
+    get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm' #退会
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
-    resources :cuisines, only: %i[new index show create index edit update destroy] do
+    resources :genres, only: %i[show index]
+    resources :contacts, only: %i[new show create index]
+    post 'contacts/confirm' => 'contacts#confirm'               # 確認画面
+    get 'contact/thanks' => 'contacts#thank', as: 'contacts_thanks'
+    resources :cuisines, only: %i[new index show create edit update destroy] do
       get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
       get :search, on: :collection                            #検索機能
       resource :cuisine_favorites, only: %i[create destroy]  #いいね機能
