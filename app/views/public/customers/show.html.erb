@@ -14,7 +14,7 @@
           <p><%= simple_format(@customer.introduction) %></p>
       </div>
       <div>
-        <%= link_to "お気に入り", customer_favorite_path, class: 'btn btn-success' %>
+        <%= link_to "お気に入り", customer_favorite_path, class: 'btn btn-secondary' %>
         <%= link_to "投稿", new_cuisine_path, class: 'btn btn-primary' %>
       </div>
       <%= render 'public/genres/index', genres: @genres %>

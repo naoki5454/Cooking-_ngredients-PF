@@ -6,7 +6,6 @@ class Public::CuisinesController < ApplicationController
     # flash[:alert] = "空欄で検索しないでください。"
     # redirect_to root_path if params[:range] == "" #rangeが入力されていないとトップページに飛ぶ
     @range = params[:range]
-<<<<<<< HEAD
 		@search = params[:search]
 		@word = params[:word]
 		if @range == ''
@@ -17,19 +16,6 @@ class Public::CuisinesController < ApplicationController
 		elsif @range == '2'
 			@genres = Genre.search(@search,@word)
 		end
-=======
-    @search = params[:search]
-    @word = params[:word]
-    case @range
-    when ''
-      redirect_to root_path
-      flash[:alert] = 'ジャンルを選択してください。'
-    when '1'
-      @cuisine = Cuisine.search(@search, @word)
-    when '2'
-      @genres = Genre.search(@search, @word)
-    end
->>>>>>> 90158f731c311f0974e31b0c627c1b812d467e92
   end
 
   def new
@@ -57,12 +43,7 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.new(cuisine_params)
     @cuisine.customer_id = current_customer.id
     if @cuisine.save
-<<<<<<< HEAD
       redirect_to cuisine_path(@cuisine), notice: "投稿成功しました。"
-=======
-      redirect_to cuisine_path(@cuisine)
-      flash[:notice] = '投稿成功しました。'
->>>>>>> 90158f731c311f0974e31b0c627c1b812d467e92
     else
       render 'new'
     end

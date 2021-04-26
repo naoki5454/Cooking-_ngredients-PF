@@ -11,6 +11,8 @@
           <div id=<%= "cuisine_buttons_#{ @cuisine.id }" %>>
             <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine, customer: @customer %>
           </div>
+          <% else %>
+            <span class="fas fa-heart heart_red"><%= @cuisine.cuisine_favorites.count %></span>
           <% end %>
           <div class="far fa-comment-dots"><%= @cuisine.cuisine_comments.count %>コメント</div>
         </td>
