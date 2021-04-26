@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-
   root to: 'homes#top'
   get '/about' => 'homes#about'
 
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
+    sessions: 'admins/sessions'
   }
   namespace :admins do
     resources :customers, only: %i[show index edit update destroy]
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
     get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
   end
 
-    scope module: :public do #routeが被らないように
+  scope module: :public do # routeが被らないように
     resources :customers, only: %i[show edit update]
     get 'customer/favorite' => 'customers#favorite', as: 'customer_favorite'
     get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm' #退会

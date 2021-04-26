@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'CuisineCommentモデルのテスト', type: :model do
-
   describe 'バリデーションのテスト' do
     subject { cuisine_comment.valid? }
 

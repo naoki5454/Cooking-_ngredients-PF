@@ -1,11 +1,12 @@
 class Public::CuisinesController < ApplicationController
-  before_action :authenticate_customer!, only: [:new, :favorite, :create, :edit, :update]
+  before_action :authenticate_customer!, only: %i[new favorite create edit update]
   before_action :correct_cuisine, only: [:edit]
 
   def search
-    #flash[:alert] = "空欄で検索しないでください。"
-    #redirect_to root_path if params[:range] == "" #rangeが入力されていないとトップページに飛ぶ
+    # flash[:alert] = "空欄で検索しないでください。"
+    # redirect_to root_path if params[:range] == "" #rangeが入力されていないとトップページに飛ぶ
     @range = params[:range]
+<<<<<<< HEAD
 		@search = params[:search]
 		@word = params[:word]
 		if @range == ''
@@ -16,6 +17,19 @@ class Public::CuisinesController < ApplicationController
 		elsif @range == '2'
 			@genres = Genre.search(@search,@word)
 		end
+=======
+    @search = params[:search]
+    @word = params[:word]
+    case @range
+    when ''
+      redirect_to root_path
+      flash[:alert] = 'ジャンルを選択してください。'
+    when '1'
+      @cuisine = Cuisine.search(@search, @word)
+    when '2'
+      @genres = Genre.search(@search, @word)
+    end
+>>>>>>> 90158f731c311f0974e31b0c627c1b812d467e92
   end
 
   def new
@@ -33,7 +47,8 @@ class Public::CuisinesController < ApplicationController
     @genres = Genre.limit(13)
   end
 
-  def favorite #料理へのいいね一覧
+  # 料理へのいいね一覧
+  def favorite
     @cuisine = Cuisine.find(params[:cuisine_id])
     @favorites = @cuisine.cuisine_favorites
   end
@@ -42,9 +57,14 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.new(cuisine_params)
     @cuisine.customer_id = current_customer.id
     if @cuisine.save
+<<<<<<< HEAD
       redirect_to cuisine_path(@cuisine), notice: "投稿成功しました。"
+=======
+      redirect_to cuisine_path(@cuisine)
+      flash[:notice] = '投稿成功しました。'
+>>>>>>> 90158f731c311f0974e31b0c627c1b812d467e92
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -56,23 +76,24 @@ class Public::CuisinesController < ApplicationController
     @cuisine = Cuisine.find(params[:id])
     if @cuisine.update(cuisine_params)
       redirect_to cuisine_path(@cuisine)
-      flash[:notice] = "編集成功しました。"
+      flash[:notice] = '編集成功しました。'
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def correct_cuisine
     @cuisine = Cuisine.find(params[:id])
-    unless @cuisine.customer.id == current_customer.id
-      redirect_to root_path
-      flash[:alert] = "urlから直打ちしないでください。（他人の料理編集ページです）"
-    end
+    return if @cuisine.customer.id == current_customer.id
+
+    redirect_to root_path
+    flash[:alert] = 'urlから直打ちしないでください。（他人の料理編集ページです）'
   end
 
   private
-  def cuisine_params
-    params.require(:cuisine).permit(:customer_id, :genre_id, :cuisine_image, :cuisine_name, :material_introduction, :introduction, :time)
-  end
 
+  def cuisine_params
+    params.require(:cuisine).permit(:customer_id, :genre_id, :cuisine_image, :cuisine_name, :material_introduction,
+                                    :introduction, :time)
+  end
 end
