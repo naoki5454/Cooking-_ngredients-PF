@@ -13,6 +13,6 @@ class Admins::CuisinesController < ApplicationController
   def destroy
     @cuisine = Cuisine.find(params[:id])
     @cuisine.destroy
-    redirect_to admins_cuisines_path
+    redirect_to admins_cuisines_path, notice: '削除しました'
   end
 end
