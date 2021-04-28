@@ -4,6 +4,7 @@
     <div class="col"></div>
     <div class="mt-2">
       <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
+      <div class="text-danger"><%= render 'layouts/errors', obj:@genre %></div>
       <%= f.text_field :genre_name, placeholder: "ジャンル名" %>
       <%= f.submit "新規登録",class: 'btn btn-sm btn-success px-4' %>
       <% end %>

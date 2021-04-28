@@ -11,7 +11,7 @@ class Admins::GenresController < ApplicationController
     if @genre.save
       redirect_to admins_genres_path, notice: "作成しました"
     else
-      @genres = Genre.all
+      @genres = Genre.page(params[:page]).per(8)
       render 'index'
     end
   end
