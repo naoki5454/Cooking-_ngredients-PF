@@ -26,10 +26,10 @@ class Public::CuisinesController < ApplicationController
     case params[:order_sort]
     when "0"
       @cuisines = Cuisine.joins(:cuisine_favorites).group(:cuisine_id).order('count(cuisine_id) desc').page(params[:page]).per(6)
-      @genres = Genre.limit(13)
+      @genres = Genre.limit(12)
     else
       @cuisines = Cuisine.page(params[:page]).per(6)
-      @genres = Genre.limit(13)
+      @genres = Genre.limit(12)
     end
   end
 
