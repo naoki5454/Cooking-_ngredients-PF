@@ -10,11 +10,14 @@
           <% if customer_signed_in? %>
           <div id=<%= "cuisine_buttons_#{ @cuisine.id }" %>>
             <%= render 'public/cuisine_favorites/favorites', cuisine: @cuisine, customer: @customer %>
+            <% if @cuisine.customer == current_customer %>
+              <%= link_to "いいね", cuisine_favorites_path(@cuisine) %>
+            <% end %>
           </div>
           <% else %>
             <span class="fas fa-heart heart_red"><%= @cuisine.cuisine_favorites.count %></span>
           <% end %>
-          <div class="far fa-comment-dots"><%= @cuisine.cuisine_comments.count %>コメント</div>
+          <div class="far fa-comment-dots"><%= @cuisine.cuisine_comments.count %></div>
         </td>
       </tr>
       </tr>
