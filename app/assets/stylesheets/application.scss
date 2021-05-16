@@ -107,6 +107,15 @@ p {
   height: 30px;
 }
 
+
+.pagination {
+  justify-content: center;
+}
+
+.genre {
+   background-color: #d2b48c;
+}
+
 #nav-open {
   display: inline-block;
   width: 30px;
@@ -142,9 +151,6 @@ p {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-  transition: .2s ease-in-out;
 }
 
 #nav-content.open {
@@ -156,24 +162,9 @@ p {
   left: 0;
   z-index: 9998;
   width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.9);/*背景色*/
-  overflow: hidden;/*ブラー効果でボヤけた部分を非表示*/
+  height: 210px;
+  background: #fffafa;
 }
-
-
-/*:beforeにぼかし効果を設定する*/
-#nav-content.open:before {
-  content: '';
-  overflow: hidden;
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
-  -o-filter: blur(10px);
-  -ms-filter: blur(10px);
-  filter: blur(10px);
-  z-index: -1;/*重なり順序を一番下にしておく*/
-}
-
 
 /*チェックが入ったら表示する内容*/
 
@@ -185,18 +176,6 @@ p {
   text-align: center;
   margin-top: 2rem;
 }
-
-.category-title {
-  padding: 0.5rem;
-  margin-left: -2rem;
-  list-style: none;
-}
-
-.category-title a {
-  color: #333;
-  text-decoration: none;
-}
-
 
 /*三本線を動かす*/
 #nav-open.active span {
@@ -215,12 +194,4 @@ p {
   -webkit-transform: translateY(-16px) rotate(45deg);
   transform: translateY(-16px) rotate(90deg);
   background-color: #888;
-}
-
-.pagination {
-  justify-content: center;
-}
-
-.genre {
-   background-color: #d2b48c;
 }
