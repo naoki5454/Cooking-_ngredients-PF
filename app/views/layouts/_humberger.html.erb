@@ -1,10 +1,5 @@
-<div>
-    <div id="nav-open">
-  <span></span>
+<div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
 </div>
-<div id="nav-content">
-  <div class="hamburger-top"></div>
-  <ul class="category">
-    <li class="category-title"><%= render 'layouts/search' %></li>
-  </ul>
-</div>
+<%= render 'layouts/search' %>
