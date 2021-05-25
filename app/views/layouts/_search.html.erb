@@ -4,6 +4,6 @@
   <%= form_tag(search_cuisines_path, method: :get) do %>
   <%= select_tag 'range' ,options_for_select([['-選択してください-', ''], ['料理', '1'],['ジャンル', '2']]) %>
 　<%= text_field_tag (:word)  %>
-　<%= submit_tag "検" %>
+　<%= submit_tag "検索" %>
 　<% end %>
 </div>
