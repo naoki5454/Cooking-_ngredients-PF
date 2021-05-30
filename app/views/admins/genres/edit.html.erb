@@ -11,7 +11,7 @@
       <tr>
         <td></td>
         <td>
-          <%= link_to "削除", admins_genre_path(@genre), method: :delete, class: 'btn btn-danger px-4' %>
+          <%= link_to "削除", admins_genre_path(@genre), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger px-4' %>
           <%= f.submit '保存', class: 'btn btn-success px-4' %>
         </td>
       </tr>
