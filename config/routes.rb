@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   scope module: :public do # routeが被らないように
     resources :customers, only: %i[show edit update]
     get 'customer/favorite' => 'customers#favorite', as: 'customer_favorite'
-    get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm' #退会
+    get 'confirm/:id' => 'customers#confirm', as: 'destroy_confirm' # 退会
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     resources :genres, only: %i[show index]
     resources :contacts, only: %i[new show create index]
@@ -33,9 +33,9 @@ Rails.application.routes.draw do
     get 'contact/thanks' => 'contacts#thank', as: 'contacts_thanks'
     resources :cuisines, only: %i[new index show create edit update destroy] do
       get 'cuisine_favorites' =>'cuisines#favorite', as: 'favorites'
-      get :search, on: :collection                            #検索機能
-      resource :cuisine_favorites, only: %i[create destroy]  #いいね機能
-      resources :cuisine_comments, only: %i[create destroy]  #コメント機能
+      get :search, on: :collection                            # 検索機能
+      resource :cuisine_favorites, only: %i[create destroy]  # いいね機能
+      resources :cuisine_comments, only: %i[create destroy]  # コメント機能
     end
   end
 end

@@ -69,6 +69,12 @@ class Public::CuisinesController < ApplicationController
     end
   end
 
+  def destroy
+    @cuisine = Cuisine.find(params[:id])
+    @cuisine.destroy
+    redirect_to :back
+  end
+
   def correct_cuisine
     @cuisine = Cuisine.find(params[:id])
     return if @cuisine.customer.id == current_customer.id
