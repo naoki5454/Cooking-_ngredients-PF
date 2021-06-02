@@ -30,9 +30,9 @@
           <td><label>説明</label></td>
           <td><%= f.text_area :introduction, autofocus: true, placeholder:"工程など" %></td>
         </tr>
-        <tr>
-          <td></td>
+        <tr class="text-center">
           <td><%= f.submit '保存', class: 'btn btn-success px-4' %></td>
+          <td><%= f.submit '削除', class: 'btn btn-danger px-4' %></td>
         </tr>
     </table>
     <% end %>
