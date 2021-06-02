@@ -70,9 +70,10 @@ class Public::CuisinesController < ApplicationController
   end
 
   def destroy
+    @customer = current_customer
     @cuisine = Cuisine.find(params[:id])
     @cuisine.destroy
-    redirect_to :back
+    redirect_to customer_path(@customer)
   end
 
   def correct_cuisine
