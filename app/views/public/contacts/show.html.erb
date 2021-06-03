@@ -1,10 +1,18 @@
-<table class="table text-center">
-  <thead>
-    <tr>
-      <h3><%= @contact.name %>のお問い合わせ内容</h3>
-    </tr>
-    <tr>
-      <h4><%= @contact.message %></h4>
-    </tr>
-  </thead>
-</table>
+
+<div class="container-fluid center">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-5">
+      <table class="table">
+          <tr>
+            <h3>お問い合わせ内容</h3>
+          </tr>
+          <tr>
+            <td><h4><%= @contact.name %></h4></td>
+            <td><h4><%= @contact.message %></h4></td>
+          </tr>
+        </table>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
