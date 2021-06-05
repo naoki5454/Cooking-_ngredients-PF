@@ -35,7 +35,7 @@
             <%= render 'public/cuisine_favorites/favorites', cuisine: cuisine %>
           </div>
           <% else %>
-            <span><%= cuisine.cuisine_favorites.count %></span>
+            <span class="fas fa-heart like-btn"><%= cuisine.cuisine_favorites.count %></span>
           <% end %>
         </td>
         <td class="far fa-comment-dots">
